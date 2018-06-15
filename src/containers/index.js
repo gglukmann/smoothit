@@ -1,0 +1,1 @@
+export { default as SmoothieDetails } from './SmoothieDetails';
