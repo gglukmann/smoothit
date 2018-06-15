@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 import API from '../common/globals';
-import { SmoothieDetails } from '../containers';
-import Switch from 'react-router-dom/Switch';
+import { SmoothieDetails } from '../containers';
+import smoothitLogo from '../assets/images/smoothit.png';
 
 class Home extends React.Component {
     state = {
@@ -46,17 +46,27 @@ class Home extends React.Component {
         ));
 
         if (!smoothies.length) {
-            smoothies = (<li>Smuutid said otsa. Palun proovige hiljem uuesti või lisage uus smuuti.</li>);
+            smoothies = (
+                <li>
+                    Smuutid said otsa. Palun proovige hiljem uuesti või lisage
+                    uus smuuti.
+                </li>
+            );
         }
 
         return (
             <React.Fragment>
-                <h1>SmoothIT</h1>
+                <header>
+                    <Link to="/">
+                        <img src={smoothitLogo} alt="SmoothIT" />
+                    </Link>
+                    {this.props.location.pathname === '/' && <h1>Get your smoothie</h1>}
+                </header>
                 <ul>
-                    {smoothies}
                     <li>
                         <Link to="/smoothie">Uus</Link>
                     </li>
+                    {smoothies}
                 </ul>
 
                 <Switch>

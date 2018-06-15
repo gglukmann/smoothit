@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { SmoothieEditForm, SmoothieAddForm } from './index';
+
 class SmoothieDetails extends React.Component {
     state = {
         smoothie: {},
@@ -36,14 +38,20 @@ class SmoothieDetails extends React.Component {
         });
     }
 
+    addSmoothie = (smoothie) => {
+        console.log(smoothie)
+    }
+
     render() {
         const { smoothie } = this.state;
 
         if (Object.keys(smoothie).length === 0) {
-            return <div>Create new smoothie</div>;
+            return <SmoothieAddForm addSmoothie={this.addSmoothie} />;
         }
 
-        return <div>Smoothie details: {smoothie.id}</div>;
+        return (
+            <SmoothieEditForm smoothie={smoothie} />
+        );
     }
 }
 
