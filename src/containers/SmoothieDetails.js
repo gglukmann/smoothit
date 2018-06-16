@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SmoothieEditForm, SmoothieAddForm, SmoothieOrderForm } from './index';
+import { SmoothieEditForm, SmoothieAddForm } from './index';
 import API from '../common/globals';
 
 class SmoothieDetails extends React.Component {
@@ -89,7 +89,6 @@ class SmoothieDetails extends React.Component {
           onSmoothieSave={this.saveSmoothie}
           smoothieComponents={smoothieComponents}
         />
-        <SmoothieOrderForm smoothie={smoothie} />
       </React.Fragment>
     );
   }

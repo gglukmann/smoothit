@@ -19,6 +19,8 @@ const SmoothieComponent = (props) => {
                 type="number"
                 onChange={e => onSmoothieComponentUpdate({...component, amount: e.target.value})}
             />
+            { component.unit }
+            <button onClick={() => onSmoothieComponentUpdate(null)}>x</button>
         </div>
     );
 }
