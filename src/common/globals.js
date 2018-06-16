@@ -1,5 +1,5 @@
-const CatalogAPI = 'http://su.leisurify.eu:8080/api';
-const OrderAPI = 'http://ngsuveülikool2018shoppinglistapi.azurewebsites.net/api';
+const CatalogAPI = '/catalogapi';
+const OrderAPI = '/orderapi';
 
 const API = {
     smoothies: `${CatalogAPI}/smoothies`,

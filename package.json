@@ -14,5 +14,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": {
+    "/catalogapi": {
+      "target": "http://su.leisurify.eu:8080/api",
+      "pathRewrite": {"^/catalogapi" : ""},
+      "changeOrigin": true
+    },
+    "/orderapi": {
+      "target": "http://xn--ngsuvelikool2018shoppinglistapi-tid.azurewebsites.net/api",
+      "pathRewrite": {"^/orderapi" : ""},
+      "changeOrigin": true
+    }
+  } 
 }
