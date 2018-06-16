@@ -1,6 +1,5 @@
 import React from 'react';
 
-import API from '../common/globals';
 import SmoothieAddComponent from './SmoothieAddComponent';
 
 class SmoothieAddForm extends React.Component {
@@ -17,25 +16,6 @@ class SmoothieAddForm extends React.Component {
         componentsCount: 1,
     };
 
-    componentDidMount() {
-        fetch(API.components)
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.status);
-                }
-
-                return response.json();
-            })
-            .then(data => {
-                this.setState({
-                    components: data.content,
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
-
     createSmoothie = event => {
         event.preventDefault();
 
@@ -51,6 +31,8 @@ class SmoothieAddForm extends React.Component {
     };
 
     render() {
+        const { smoothieComponents } = this.props;
+
         return (
             <form onSubmit={this.createSmoothie}>
                 <input
@@ -65,7 +47,7 @@ class SmoothieAddForm extends React.Component {
                     name="description"
                     placeholder="Kirjeldus"
                 />
-                <SmoothieAddComponent components={this.state.components} />
+                <SmoothieAddComponent components={smoothieComponents} />
                 <button type="button">+ Lisa komponent</button>
                 <p>Hind: {this.state.price} €</p>
                 <p>Kaal: {this.state.weight} kg</p>

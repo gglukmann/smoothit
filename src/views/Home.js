@@ -21,7 +21,6 @@ class Home extends React.Component {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 // add to localstorage to get them really fast on page load
                 localStorage.setItem('smoothies', JSON.stringify(data.content));
                 // update current state with new smoothies
