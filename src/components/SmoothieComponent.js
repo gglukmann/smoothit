@@ -4,23 +4,30 @@ const SmoothieComponent = (props) => {
     const { component, componentList, onSmoothieComponentUpdate } = props;
 
     return (
-        <div>
-            <select 
-                value={component.id} 
-                onChange={e => onSmoothieComponentUpdate(componentList.find(x => x.id === parseInt(e.target.value)))}
-            >
-                {componentList.map(item => {
-                    return <option key={item.id} value={item.id}>{item.name}</option>
-                })}
-            </select>
-            <input 
-                value={component.amount || ''} 
-                placeholder="Kogus" 
-                type="number"
-                onChange={e => onSmoothieComponentUpdate({...component, amount: e.target.value})}
-            />
-            { component.unit }
-            <button onClick={() => onSmoothieComponentUpdate(null)}>x</button>
+        <div className="component">
+            <div className="component__type">
+                <select
+                    className="form-select" 
+                    value={component.id} 
+                    onChange={e => onSmoothieComponentUpdate(componentList.find(x => x.id === parseInt(e.target.value)))} >
+                    {componentList.map(option => {
+                        return <option key={option.id} value={option.id}>{option.name}</option>
+                    })}
+                </select>
+                <button 
+                    className="btn--icon"
+                    onClick={() => onSmoothieComponentUpdate(null)}
+                ><i class="fas fa-minus"></i></button>
+            </div>
+            <div className="component__amount">   
+                <input 
+                    className="form-text"
+                    value={component.amount || ''} 
+                    placeholder="Kogus" 
+                    type="number"
+                    onChange={e => onSmoothieComponentUpdate({...component, amount: e.target.value})} />
+                <span>kg</span>
+            </div>
         </div>
     );
 }

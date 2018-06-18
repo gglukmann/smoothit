@@ -1,5 +1,155 @@
+
+/* Form element reset */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+input[type='number'],
+input[type='text'],
+select,
+button {
+  -webkit-appearance:     none;
+  -moz-appearance:        none;
+  -ms-appearance:         none;
+  -o-appearance:          none;
+  appearance:             none;
+  outline:                none;
+}
+
+/* Variables */
+
+:root {
+  --grey-l: #e9eae9;
+  --grey: #a3a3a3;
+  --grey-d: #3a3a3a;
+  --blue: #bcddda;
+  --pink: #cc3f98;
+  --corner-radius: 20px;
+}
+
+/* BODY */
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: var(--grey-d);
 }
+
+/* FORM: TEXT */
+.form-text {
+  border: 1px solid transparent;
+  border-radius: var(--corner-radius);
+}
+
+.form-text:hover,
+.form-text:focus {
+  border-color: var(--grey-l);
+}
+
+
+/* COMPONENT */
+.component {
+  display: flex;
+  margin: 5px 0;
+}
+
+.component__amount .form-text {
+  width: 60px;
+  font-size: .9em;
+  padding: 5px 5px;
+}
+
+.component__type {
+  display: flex;
+  align-items: center;
+  border-radius: var(--corner-radius);
+  padding: 5px;
+  color: #4b4b4b;
+  background: transparent;
+  cursor: pointer;
+}
+
+.component__type:hover {
+  background: var(--grey-l);
+  position: relative;
+}
+
+.component__type .form-select {
+  border: none;
+  background: none;
+  font-size: .9em;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.component__type .btn--icon {
+  background-color: transparent;
+  color:transparent;
+}
+
+.component__type:hover .btn--icon {
+  background-color: var(--grey);
+  color: white;
+}
+
+/* SMOOTHIEFORM */
+.smoothieform__header {
+  font-size: 18px;
+  padding: 10px 15px;
+  font-weight: 600;
+}
+
+/* BUTTON */
+.btn {
+  background-color: var(--blue);
+  border: 1px solid transparent;
+  border-radius: var(--corner-radius);
+  outline: none;
+  cursor: pointer;
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn--pink {
+  background-color: var(--pink);
+  color: white;
+}
+
+.btn:hover {
+  border-color: var(--grey);
+}
+
+.btn--icon {
+  height: 17px;
+  width: 17px;
+  font-size: 8px;
+}
+
+.btn--icon-lg {
+  height: 30px;
+  width: 30px;
+  font-size: 14px;
+}
+
+.btn--icon,
+.btn--icon-lg {
+  border: none;
+  position: relative;
+  border-radius: 50%;
+  cursor:pointer;
+}
+
+.btn--icon svg,
+.btn--icon-lg svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

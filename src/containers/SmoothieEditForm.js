@@ -90,30 +90,33 @@ class SmoothieForm extends React.Component {
     if(!smoothie) return;
 
     return (
-      <div>
+      <div className="smoothieform">
         <input 
+          className="smoothieform__header form-text"
           value={name} 
+          type="text"
           placeholder="Nimi"
           onChange={e => this.handleValueUpdate(e, 'name')} />
-        <input 
-          value={description} 
-          placeholder="Kirjeldus"
-          onChange={e => this.handleValueUpdate(e, 'description')} />
         {smoothieComponents.map((component, i) => {
           return (
-            <div key={`smoothiecomponent_${i}`}>
-              <SmoothieComponent 
+            <SmoothieComponent 
+                key={`smoothiecomponent_${i}`}
                 component={component} 
                 componentList={this.props.smoothieComponents}
                 onSmoothieComponentUpdate={component => this.updateSmoothieComponent(component, i)} />
-            </div>
           );
         })}
-        <button onClick={this.addSmoothieComponent.bind(this)}>
-          Lisa komponent
-        </button>
-        <button onClick={e => this.props.onSmoothieSave(this.state.smoothie)}>Salvesta</button>
-        <button onClick={this.createShoppingList.bind(this)}>Tee ostunimekiri</button>
+
+        <button 
+          className="btn--icon-lg btn--pink" 
+          onClick={this.addSmoothieComponent.bind(this)}><i class="fas fa-plus"></i></button>
+        <button 
+          className="btn"
+          onClick={e => this.props.onSmoothieSave(this.state.smoothie)}>Salvesta</button>
+        <button 
+          className="btn"
+          onClick={this.createShoppingList.bind(this)}>Loo ostunimekiri</button>
+
         {shoppingList && <ShoppingList shoppingList={shoppingList} />}
       </div>
     );
