@@ -109,7 +109,7 @@ class SmoothieForm extends React.Component {
 
         <button 
           className="btn--icon-lg btn--pink" 
-          onClick={this.addSmoothieComponent.bind(this)}><i class="fas fa-plus"></i></button>
+          onClick={this.addSmoothieComponent.bind(this)}><i className="fas fa-plus"></i></button>
         <button 
           className="btn"
           onClick={e => this.props.onSmoothieSave(this.state.smoothie)}>Salvesta</button>
