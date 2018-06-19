@@ -11,7 +11,13 @@ const Smoothie = ({ smoothie }) => {
         //     const percent = parseInt(((item.amount || 1) * 100) / amount);
         //     return `${item.colorHex} ${percent}%`;
         // });
+
+        // get all colors from components and create new array
         const colors = components.map(item => item.colorHex);
+        // if smoothie has only one component then add same color twice to use linear-gradient correctly
+        if (colors.length <= 1) {
+            colors.push(colors[0]);
+        }
         return { background: `linear-gradient(to top, ${colors.join(', ')})` };
     };
 
