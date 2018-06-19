@@ -10,7 +10,7 @@ class SmoothieForm extends React.Component {
         shoppingList: null,
         weight: 0,
         price: 0,
-        cal: 0,
+        kcal: 0,
         isNew: false,
     };
 
@@ -19,10 +19,41 @@ class SmoothieForm extends React.Component {
             return {
                 smoothie: props.smoothie,
                 isNew: props.isNew,
+                weight: 0,
+                price: 0,
+                kcal: 0,
             };
         }
 
         return null;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.isNew !== this.state.isNew) {
+            this.calculateSmoothie();
+        }
+    }
+
+    calculateSmoothie() {
+        const components = this.state.smoothie.smoothieComponents;
+
+        if (!components) return;
+
+        const kcal = Object.keys(components).reduce((previous, key) => {
+            return previous + components[key].kcalPerUnit;
+        }, 0);
+        const price = Object.keys(components).reduce((previous, key) => {
+            return previous + components[key].unitPriceEur;
+        }, 0);
+        const weight = Object.keys(components).reduce((previous, key) => {
+            return previous + components[key].amount;
+        }, 0);
+
+        this.setState({
+            kcal,
+            price,
+            weight,
+        });
     }
 
     handleValueUpdate = (e, key) => {
@@ -42,7 +73,7 @@ class SmoothieForm extends React.Component {
             smoothie.smoothieComponents.splice(index, 1);
         }
 
-        this.setState({ smoothie });
+        this.setState({ smoothie }, () => this.calculateSmoothie());
     }
 
     addSmoothieComponent = () => {
@@ -54,7 +85,7 @@ class SmoothieForm extends React.Component {
 
         smoothie.smoothieComponents.push(this.props.componentList[0]);
 
-        this.setState({ smoothie });
+        this.setState({ smoothie }, () => this.calculateSmoothie());
     };
 
     createShoppingList = () => {
@@ -101,7 +132,7 @@ class SmoothieForm extends React.Component {
             shoppingList,
             weight,
             price,
-            cal,
+            kcal,
             smoothie,
             smoothie: { name, smoothieComponents },
         } = this.state;
@@ -136,8 +167,8 @@ class SmoothieForm extends React.Component {
                     })}
 
                 <p>Hind: {price} €</p>
-                <p>Kaal: {weight} kg</p>
-                <p>Kalorsus: {cal} kcal</p>
+                <p>Kogus: {weight} kg</p>
+                <p>Kalorsus: {kcal} kcal</p>
 
                 <button
                     type="button"

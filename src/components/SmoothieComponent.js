@@ -29,7 +29,7 @@ const SmoothieComponent = props => {
                     className="btn--icon"
                     onClick={() => onSmoothieComponentUpdate(null)}
                 >
-                    <i className="fas fa-minus" />
+                    <i className="fa fa-minus" />
                 </button>
             </div>
             <div className="component__amount">
