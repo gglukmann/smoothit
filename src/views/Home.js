@@ -39,7 +39,7 @@ class Home extends React.Component {
             });
     }
 
-    addSmoothie() {
+    addSmoothie = () => {
         this.getSmoothies();
     };
 
