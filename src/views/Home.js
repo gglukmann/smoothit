@@ -39,7 +39,7 @@ class Home extends React.Component {
             });
     }
 
-    addSmoothie = () => {
+    saveSmoothie = () => {
         this.getSmoothies();
     };
 
@@ -89,11 +89,16 @@ class Home extends React.Component {
                         render={props => (
                             <SmoothieDetails
                                 {...props}
-                                onAddSmoothie={this.addSmoothie}
+                                onSaveSmoothie={this.saveSmoothie}
                             />
                         )}
                     />
-                    <Route path="/smoothie/:id" component={SmoothieDetails} />
+                    <Route path="/smoothie/:id" render={props => (
+                            <SmoothieDetails
+                                {...props}
+                                onSaveSmoothie={this.saveSmoothie}
+                            />
+                        )} />
                 </Switch>
             </React.Fragment>
         );

@@ -97,9 +97,7 @@ class SmoothieDetails extends React.Component {
                 }
                 localStorage.setItem('smoothies', JSON.stringify(smoothies));
 
-                if (typeof this.props.onAddSmoothie === 'function') {
-                    this.props.onAddSmoothie();
-                }
+                this.props.onSaveSmoothie();
             })
             .catch(error => {
                 console.log(error);
@@ -126,6 +124,7 @@ SmoothieDetails.propTypes = {
     smoothie: PropTypes.object,
     pathname: PropTypes.string,
     componentList: PropTypes.array,
+    onSaveSmoothie: PropTypes.func.isRequired,
 }
 
 SmoothieDetails.defaultProps = {
