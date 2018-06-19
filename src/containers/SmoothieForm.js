@@ -40,7 +40,10 @@ class SmoothieForm extends React.Component {
         if (!components) return;
 
         const kcal = Object.keys(components).reduce((previous, key) => {
-            return previous + (components[key].kcalPerUnit * (components[key].amount || 1));
+            return (
+                previous +
+                components[key].kcalPerUnit * (components[key].amount || 1)
+            );
         }, 0);
         const price = Object.keys(components).reduce((previous, key) => {
             return previous + components[key].unitPriceEur;
@@ -56,7 +59,7 @@ class SmoothieForm extends React.Component {
             smoothie: {
                 ...this.state.smoothie,
                 calories: kcal,
-            }
+            },
         });
     }
 
@@ -138,7 +141,7 @@ class SmoothieForm extends React.Component {
             price,
             kcal,
             smoothie,
-            smoothie: { name, smoothieComponents, description, instruction },
+            smoothie: { name, smoothieComponents, description, instructions },
         } = this.state;
 
         if (!smoothie) return;
@@ -165,10 +168,10 @@ class SmoothieForm extends React.Component {
                 />
                 <input
                     className="smoothieform__header form-text"
-                    value={instruction || ''}
+                    value={instructions || ''}
                     type="text"
                     placeholder="Valmistamise õpetus"
-                    onChange={e => this.handleValueUpdate(e, 'instruction')}
+                    onChange={e => this.handleValueUpdate(e, 'instructions')}
                 />
                 {smoothieComponents &&
                     smoothieComponents.map((component, i) => {
