@@ -22,7 +22,6 @@ class SmoothieAddForm extends React.Component {
         const smoothie = {
             name: this.nameRef.current.value,
             description: this.descRef.current.value,
-            weight: this.weightRef.current.value,
             components: this.selectRef.current.value,
         };
 
@@ -32,6 +31,7 @@ class SmoothieAddForm extends React.Component {
 
     render() {
         const { smoothieComponents } = this.props;
+        const { price, weight, cal } = this.state;
 
         return (
             <form onSubmit={this.createSmoothie}>
@@ -49,9 +49,9 @@ class SmoothieAddForm extends React.Component {
                 />
                 <SmoothieAddComponent components={smoothieComponents} />
                 <button type="button">+ Lisa komponent</button>
-                <p>Hind: {this.state.price} €</p>
-                <p>Kaal: {this.state.weight} kg</p>
-                <p>Kalorsus: {this.state.cal} kcal</p>
+                <p>Hind: {price} €</p>
+                <p>Kaal: {weight} kg</p>
+                <p>Kalorsus: {cal} kcal</p>
                 <button type="submit">Salvesta</button>
             </form>
         );

@@ -2,6 +2,8 @@ import React from 'react';
 
 class SmoothieAddComponent extends React.Component {
     render() {
+        const { components } = this.props;
+
         return (
             <div>
                 <select
@@ -11,7 +13,7 @@ class SmoothieAddComponent extends React.Component {
                     }}
                 >
                     <option value="0">Vali komponent</option>
-                    {this.props.components.map(item => {
+                    {components.map(item => {
                         return (
                             <option value={item.id} key={item.id}>
                                 {item.name}
