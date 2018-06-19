@@ -26,6 +26,7 @@ const SmoothieComponent = props => {
                     })}
                 </select>
                 <button
+                    type="button"
                     className="btn--icon"
                     onClick={() => onSmoothieComponentUpdate(null)}
                 >
