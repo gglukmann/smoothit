@@ -11,15 +11,14 @@ class SmoothieForm extends React.Component {
         weight: 0,
         price: 0,
         cal: 0,
+        isNew: false,
     };
 
     static getDerivedStateFromProps(props, state) {
-        if (
-            Object.keys(state.smoothie).length === 0 ||
-            Object.keys(props.smoothie).length === 0
-        ) {
+        if (props.isNew !== state.isNew) {
             return {
                 smoothie: props.smoothie,
+                isNew: props.isNew,
             };
         }
 
@@ -27,7 +26,7 @@ class SmoothieForm extends React.Component {
     }
 
     handleValueUpdate = (e, key) => {
-        let smoothie = this.state.smoothie;
+        const smoothie = { ...this.state.smoothie };
 
         smoothie[key] = e.target.value;
 
@@ -35,7 +34,7 @@ class SmoothieForm extends React.Component {
     };
 
     updateSmoothieComponent(component, index) {
-        let smoothie = this.state.smoothie;
+        const smoothie = { ...this.state.smoothie };
 
         if (component) {
             smoothie.smoothieComponents[index] = component;
@@ -47,7 +46,11 @@ class SmoothieForm extends React.Component {
     }
 
     addSmoothieComponent = () => {
-        let smoothie = this.state.smoothie;
+        const smoothie = { ...this.state.smoothie };
+
+        if (!smoothie.smoothieComponents) {
+            smoothie.smoothieComponents = [];
+        }
 
         smoothie.smoothieComponents.push(this.props.componentList[0]);
 
@@ -92,13 +95,16 @@ class SmoothieForm extends React.Component {
     };
 
     render() {
-        const {
-            smoothie: { name, smoothieComponents },
-            smoothie,
-            componentList,
-        } = this.props;
+        const { componentList } = this.props;
 
-        const { shoppingList, weight, price, cal } = this.state;
+        const {
+            shoppingList,
+            weight,
+            price,
+            cal,
+            smoothie,
+            smoothie: { name, smoothieComponents },
+        } = this.state;
 
         if (!smoothie) return;
 
@@ -110,7 +116,7 @@ class SmoothieForm extends React.Component {
             >
                 <input
                     className="smoothieform__header form-text"
-                    value={name || ''}
+                    value={name || ''}
                     type="text"
                     placeholder="Nimi"
                     onChange={e => this.handleValueUpdate(e, 'name')}

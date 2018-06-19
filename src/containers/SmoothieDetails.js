@@ -69,21 +69,13 @@ class SmoothieDetails extends React.Component {
     render() {
         const { smoothie, componentList } = this.state;
 
-        if (Object.keys(smoothie).length === 0) {
-            return (
-                <SmoothieForm
-                    onSmoothieSave={this.saveSmoothie}
-                    componentList={componentList}
-                />
-            );
-        }
-
         return (
             <React.Fragment>
                 <SmoothieForm
                     smoothie={smoothie}
                     onSmoothieSave={this.saveSmoothie}
                     componentList={componentList}
+                    isNew={Object.keys(smoothie).length === 0}
                 />
             </React.Fragment>
         );
