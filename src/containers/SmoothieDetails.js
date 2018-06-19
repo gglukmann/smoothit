@@ -97,7 +97,7 @@ class SmoothieDetails extends React.Component {
                 }
                 localStorage.setItem('smoothies', JSON.stringify(smoothies));
                 if (typeof this.props.onAddSmoothie === 'function') {
-                    this.props.onAddSmoothie(smoothies);
+                    this.props.onAddSmoothie();
                 }
             })
             .catch(error => {

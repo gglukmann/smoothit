@@ -14,6 +14,10 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
+        this.getSmoothies();
+    }
+
+    getSmoothies() {
         fetch(API.smoothies)
             .then(response => {
                 if (!response.ok) {
@@ -35,10 +39,8 @@ class Home extends React.Component {
             });
     }
 
-    addSmoothie = smoothies => {
-        this.setState({
-            smoothies,
-        });
+    addSmoothie() {
+        this.getSmoothies();
     };
 
     render() {
