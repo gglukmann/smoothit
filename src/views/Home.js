@@ -33,6 +33,12 @@ class Home extends React.Component {
             });
     }
 
+    addSmoothie = smoothies => {
+        this.setState({
+            smoothies,
+        });
+    };
+
     render() {
         let smoothies = this.state.smoothies.map(item => (
             <li key={item.id}>
@@ -59,7 +65,9 @@ class Home extends React.Component {
                     <Link to="/">
                         <img src={smoothitLogo} alt="SmoothIT" />
                     </Link>
-                    {this.props.location.pathname === '/' && <h1>Get your smoothie</h1>}
+                    {this.props.location.pathname === '/' && (
+                        <h1>Get your smoothie</h1>
+                    )}
                 </header>
                 <ul>
                     <li>
@@ -69,7 +77,16 @@ class Home extends React.Component {
                 </ul>
 
                 <Switch>
-                    <Route exact path="/smoothie" component={SmoothieDetails} />
+                    <Route
+                        exact
+                        path="/smoothie"
+                        render={props => (
+                            <SmoothieDetails
+                                {...props}
+                                onAddSmoothie={this.addSmoothie}
+                            />
+                        )}
+                    />
                     <Route path="/smoothie/:id" component={SmoothieDetails} />
                 </Switch>
             </React.Fragment>
