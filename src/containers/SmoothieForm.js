@@ -39,17 +39,14 @@ class SmoothieForm extends React.Component {
 
         if (!components) return;
 
-        const kcal = Object.keys(components).reduce((previous, key) => {
-            return (
-                previous +
-                components[key].kcalPerUnit * (components[key].amount || 1)
-            );
+        const kcal = components.reduce((previous, item) => {
+            return previous + item.kcalPerUnit * (item.amount || 1);
         }, 0);
-        const price = Object.keys(components).reduce((previous, key) => {
-            return previous + components[key].unitPriceEur;
+        const price = components.reduce((previous, item) => {
+            return previous + item.unitPriceEur;
         }, 0);
-        const weight = Object.keys(components).reduce((previous, key) => {
-            return previous + (components[key].amount || 1);
+        const weight = components.reduce((previous, item) => {
+            return previous + (item.amount || 1);
         }, 0);
 
         this.setState({
@@ -120,9 +117,22 @@ class SmoothieForm extends React.Component {
                 return response.json();
             })
             .then(data => {
-                this.setState({
-                    shoppingList: data.components,
-                });
+                fetch(`${API.shoppingList}/${data.id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw Error(response.status);
+                        }
+
+                        return response.json();
+                    })
+                    .then(order => {
+                        this.setState({
+                            shoppingList: order,
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             })
             .catch(error => {
                 console.log(error);
@@ -188,11 +198,9 @@ class SmoothieForm extends React.Component {
                             />
                         );
                     })}
-
                 <p>Hind: {price} €</p>
                 <p>Kogus: {weight} kg</p>
                 <p>Kalorsus: {kcal} kcal</p>
-
                 <button
                     type="button"
                     className="btn--icon-lg btn--pink"
@@ -217,7 +225,6 @@ class SmoothieForm extends React.Component {
                 >
                     Loo ostunimekiri
                 </button>
-
                 {shoppingList && <ShoppingList shoppingList={shoppingList} />}
             </form>
         );
