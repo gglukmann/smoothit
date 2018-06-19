@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SmoothieEditForm, SmoothieAddForm } from './index';
+import { SmoothieForm } from './index';
 import API from '../common/globals';
 
 class SmoothieDetails extends React.Component {
@@ -62,10 +62,6 @@ class SmoothieDetails extends React.Component {
             });
     }
 
-    addSmoothie = smoothie => {
-        console.log(smoothie);
-    };
-
     saveSmoothie(smoothie) {
         console.log(smoothie);
     }
@@ -75,8 +71,8 @@ class SmoothieDetails extends React.Component {
 
         if (Object.keys(smoothie).length === 0) {
             return (
-                <SmoothieAddForm
-                    addSmoothie={this.addSmoothie}
+                <SmoothieForm
+                    onSmoothieSave={this.saveSmoothie}
                     componentList={componentList}
                 />
             );
@@ -84,7 +80,7 @@ class SmoothieDetails extends React.Component {
 
         return (
             <React.Fragment>
-                <SmoothieEditForm
+                <SmoothieForm
                     smoothie={smoothie}
                     onSmoothieSave={this.saveSmoothie}
                     componentList={componentList}

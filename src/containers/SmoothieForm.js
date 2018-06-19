@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ShoppingList, SmoothieComponent } from '../components';
+import { ShoppingList, SmoothieComponent } from '../components';
 import API from '../common/globals';
 
-class SmoothieEditForm extends React.Component {
+class SmoothieForm extends React.Component {
     state = {
         smoothie: null,
         shoppingList: null,
+        weight: 0,
+        price: 0,
+        cal: 0,
     };
 
     static getDerivedStateFromProps(props, state) {
         if (!state.smoothie) {
+            console.log(props)
             return {
                 smoothie: props.smoothie,
             };
@@ -80,20 +84,24 @@ class SmoothieEditForm extends React.Component {
             });
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.onSmoothieSave(this.state.smoothie);
+    }
+
     render() {
         const {
             smoothie: { name, smoothieComponents },
             smoothie,
-            onSmoothieSave,
             componentList,
         } = this.props;
 
-        const { shoppingList } = this.state;
+        const { shoppingList, weight, price, cal } = this.state;
 
         if (!smoothie) return;
 
         return (
-            <div className="smoothieform">
+            <form onSubmit={this.handleSubmit} className="smoothieform">
                 <input
                     className="smoothieform__header form-text"
                     value={name}
@@ -101,18 +109,23 @@ class SmoothieEditForm extends React.Component {
                     placeholder="Nimi"
                     onChange={e => this.handleValueUpdate(e, 'name')}
                 />
-                {smoothieComponents.map((component, i) => {
-                    return (
-                        <SmoothieComponent
-                            key={`smoothiecomponent_${i}`}
-                            component={component}
-                            componentList={componentList}
-                            onSmoothieComponentUpdate={component =>
-                                this.updateSmoothieComponent(component, i)
-                            }
-                        />
-                    );
-                })}
+                {smoothieComponents &&
+                    smoothieComponents.map((component, i) => {
+                        return (
+                            <SmoothieComponent
+                                key={`smoothiecomponent_${i}`}
+                                component={component}
+                                componentList={componentList}
+                                onSmoothieComponentUpdate={component =>
+                                    this.updateSmoothieComponent(component, i)
+                                }
+                            />
+                        );
+                    })}
+
+                <p>Hind: {price} €</p>
+                <p>Kaal: {weight} kg</p>
+                <p>Kalorsus: {cal} kcal</p>
 
                 <button
                     className="btn--icon-lg btn--pink"
@@ -120,10 +133,7 @@ class SmoothieEditForm extends React.Component {
                 >
                     <i className="fa fa-plus" />
                 </button>
-                <button
-                    className="btn"
-                    onClick={e => onSmoothieSave(this.state.smoothie)}
-                >
+                <button type="submit" className="btn">
                     Salvesta
                 </button>
                 <button className="btn" onClick={this.createShoppingList}>
@@ -131,17 +141,17 @@ class SmoothieEditForm extends React.Component {
                 </button>
 
                 {shoppingList && <ShoppingList shoppingList={shoppingList} />}
-            </div>
+            </form>
         );
     }
 }
 
-SmoothieEditForm.propTypes = {
+SmoothieForm.propTypes = {
     smoothie: PropTypes.object,
 };
 
-SmoothieEditForm.defaultProps = {
+SmoothieForm.defaultProps = {
     smoothie: {},
 };
 
-export default SmoothieEditForm;
+export default SmoothieForm;
