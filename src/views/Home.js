@@ -69,8 +69,8 @@ class Home extends React.Component {
                     <Link to="/">
                         <img src={smoothitLogo} alt="SmoothIT" />
                     </Link>
-                    <SmoothieTable></SmoothieTable>
-                    <SmoothieTable className="smoothietable--sm"></SmoothieTable>
+                    <SmoothieTable />
+                    <SmoothieTable className="smoothietable--sm" />
                     {this.props.location.pathname === '/' && (
                         <h1>Get your smoothie</h1>
                     )}
@@ -93,12 +93,15 @@ class Home extends React.Component {
                             />
                         )}
                     />
-                    <Route path="/smoothie/:id" render={props => (
+                    <Route
+                        path="/smoothie/:id"
+                        render={props => (
                             <SmoothieDetails
                                 {...props}
                                 onSaveSmoothie={this.saveSmoothie}
                             />
-                        )} />
+                        )}
+                    />
                 </Switch>
             </React.Fragment>
         );
@@ -107,10 +110,10 @@ class Home extends React.Component {
 
 Home.propTypes = {
     smoothies: PropTypes.array,
-}
+};
 
 Home.defaultProps = {
     smoothies: [],
-}
+};
 
 export default Home;

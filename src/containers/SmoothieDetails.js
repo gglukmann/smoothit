@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SmoothieForm } from './index';
+import { Smoothie } from '../components';
 import API from '../common/globals';
 
 class SmoothieDetails extends React.Component {
@@ -87,16 +88,7 @@ class SmoothieDetails extends React.Component {
 
                 return response.json();
             })
-            .then(data => {
-                const smoothies = JSON.parse(localStorage.getItem('smoothies'));
-                const index = smoothies.findIndex(item => item.id === data.id);
-                if (index !== -1) {
-                    smoothies[index] = data;
-                } else {
-                    smoothies.push(data);
-                }
-                localStorage.setItem('smoothies', JSON.stringify(smoothies));
-
+            .then(() => {
                 this.props.onSaveSmoothie();
             })
             .catch(error => {
@@ -109,6 +101,7 @@ class SmoothieDetails extends React.Component {
 
         return (
             <React.Fragment>
+                <Smoothie smoothie={smoothie} />
                 <SmoothieForm
                     smoothie={smoothie}
                     onSmoothieSave={this.saveSmoothie}
