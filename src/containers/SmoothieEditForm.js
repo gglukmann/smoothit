@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SmoothieComponent from '../components/SmoothieComponent';
-import ShoppingList from '../components/ShoppingList';
-
+import { ShoppingList, SmoothieComponent } from '../components';
 import API from '../common/globals';
 
-class SmoothieForm extends React.Component {
+class SmoothieEditForm extends React.Component {
     state = {
         smoothie: null,
         shoppingList: null,
@@ -45,7 +43,7 @@ class SmoothieForm extends React.Component {
     addSmoothieComponent = () => {
         let smoothie = this.state.smoothie;
 
-        smoothie.smoothieComponents.push(this.props.smoothieComponents[0]);
+        smoothie.smoothieComponents.push(this.props.componentList[0]);
 
         this.setState({ smoothie });
     };
@@ -87,6 +85,7 @@ class SmoothieForm extends React.Component {
             smoothie: { name, smoothieComponents },
             smoothie,
             onSmoothieSave,
+            componentList,
         } = this.props;
 
         const { shoppingList } = this.state;
@@ -107,7 +106,7 @@ class SmoothieForm extends React.Component {
                         <SmoothieComponent
                             key={`smoothiecomponent_${i}`}
                             component={component}
-                            componentList={smoothieComponents}
+                            componentList={componentList}
                             onSmoothieComponentUpdate={component =>
                                 this.updateSmoothieComponent(component, i)
                             }
@@ -119,7 +118,7 @@ class SmoothieForm extends React.Component {
                     className="btn--icon-lg btn--pink"
                     onClick={this.addSmoothieComponent}
                 >
-                    <i className="fas fa-plus" />
+                    <i className="fa fa-plus" />
                 </button>
                 <button
                     className="btn"
@@ -137,12 +136,12 @@ class SmoothieForm extends React.Component {
     }
 }
 
-SmoothieForm.propTypes = {
+SmoothieEditForm.propTypes = {
     smoothie: PropTypes.object,
 };
 
-SmoothieForm.defaultProps = {
+SmoothieEditForm.defaultProps = {
     smoothie: {},
 };
 
-export default SmoothieForm;
+export default SmoothieEditForm;

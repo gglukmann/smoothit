@@ -1,28 +1,43 @@
 import React from 'react';
 
-import SmoothieAddComponent from './SmoothieAddComponent';
+import { SmoothieComponent } from '../components';
 
 class SmoothieAddForm extends React.Component {
-    nameRef = React.createRef();
-    descRef = React.createRef();
-    weightRef = React.createRef();
-    selectRef = React.createRef();
-
     state = {
-        components: [],
+        smoothie: {
+            smoothieComponents: [],
+        },
         price: 0,
         weight: 0,
         cal: 0,
-        componentsCount: 1,
+    };
+
+    updateSmoothieComponent(component, index) {
+        let smoothie = this.state.smoothie;
+
+        if (component) {
+            smoothie.smoothieComponents[index] = component;
+        } else {
+            smoothie.smoothieComponents.splice(index, 1);
+        }
+
+        this.setState({ smoothie });
+    }
+
+    addSmoothieComponent = () => {
+        let smoothie = this.state.smoothie;
+
+        smoothie.smoothieComponents.push(this.props.smoothieComponents[0]);
+
+        this.setState({ smoothie });
     };
 
     createSmoothie = event => {
         event.preventDefault();
 
         const smoothie = {
-            name: this.nameRef.current.value,
-            description: this.descRef.current.value,
-            components: this.selectRef.current.value,
+            // name: this.nameRef.current.value,
+            // description: this.descRef.current.value,
         };
 
         this.props.addSmoothie(smoothie);
@@ -30,8 +45,13 @@ class SmoothieAddForm extends React.Component {
     };
 
     render() {
-        const { smoothieComponents } = this.props;
-        const { price, weight, cal } = this.state;
+        const { componentList } = this.props;
+        const {
+            smoothie: { smoothieComponents },
+            price,
+            weight,
+            cal,
+        } = this.state;
 
         return (
             <form onSubmit={this.createSmoothie}>
@@ -47,8 +67,24 @@ class SmoothieAddForm extends React.Component {
                     name="description"
                     placeholder="Kirjeldus"
                 />
-                <SmoothieAddComponent components={smoothieComponents} />
-                <button type="button">+ Lisa komponent</button>
+                {smoothieComponents.map((component, i) => {
+                    return (
+                        <SmoothieComponent
+                            key={`smoothiecomponent_${i}`}
+                            component={component}
+                            componentList={componentList}
+                            onSmoothieComponentUpdate={component =>
+                                this.updateSmoothieComponent(component, i)
+                            }
+                        />
+                    );
+                })}
+                <button
+                    className="btn--icon-lg btn--pink"
+                    onClick={this.addSmoothieComponent}
+                >
+                    <i className="fa fa-plus" />
+                </button>
                 <p>Hind: {price} €</p>
                 <p>Kaal: {weight} kg</p>
                 <p>Kalorsus: {cal} kcal</p>

@@ -7,7 +7,7 @@ class SmoothieDetails extends React.Component {
     state = {
         smoothie: {},
         pathname: null,
-        smoothieComponents: [],
+        componentList: [],
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -54,7 +54,7 @@ class SmoothieDetails extends React.Component {
             })
             .then(data => {
                 this.setState({
-                    smoothieComponents: data.content,
+                    componentList: data.content,
                 });
             })
             .catch(error => {
@@ -71,13 +71,13 @@ class SmoothieDetails extends React.Component {
     }
 
     render() {
-        const { smoothie, smoothieComponents } = this.state;
+        const { smoothie, componentList } = this.state;
 
         if (Object.keys(smoothie).length === 0) {
             return (
                 <SmoothieAddForm
                     addSmoothie={this.addSmoothie}
-                    smoothieComponents={smoothieComponents}
+                    componentList={componentList}
                 />
             );
         }
@@ -87,7 +87,7 @@ class SmoothieDetails extends React.Component {
                 <SmoothieEditForm
                     smoothie={smoothie}
                     onSmoothieSave={this.saveSmoothie}
-                    smoothieComponents={smoothieComponents}
+                    componentList={componentList}
                 />
             </React.Fragment>
         );
