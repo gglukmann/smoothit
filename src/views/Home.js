@@ -3,6 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';
+import { SmoothieTable } from '../components';
 import smoothitLogo from '../assets/images/smoothit.png';
 
 class Home extends React.Component {
@@ -65,6 +66,8 @@ class Home extends React.Component {
                     <Link to="/">
                         <img src={smoothitLogo} alt="SmoothIT" />
                     </Link>
+                    <SmoothieTable></SmoothieTable>
+                    <SmoothieTable className="smoothietable--sm"></SmoothieTable>
                     {this.props.location.pathname === '/' && (
                         <h1>Get your smoothie</h1>
                     )}
