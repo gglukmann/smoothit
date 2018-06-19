@@ -40,19 +40,26 @@ class SmoothieForm extends React.Component {
         if (!components) return;
 
         const kcal = Object.keys(components).reduce((previous, key) => {
-            return previous + components[key].kcalPerUnit;
+            return (
+                previous +
+                components[key].kcalPerUnit * (components[key].amount || 1)
+            );
         }, 0);
         const price = Object.keys(components).reduce((previous, key) => {
             return previous + components[key].unitPriceEur;
         }, 0);
         const weight = Object.keys(components).reduce((previous, key) => {
-            return previous + components[key].amount;
+            return previous + (components[key].amount || 1);
         }, 0);
 
         this.setState({
             kcal,
             price,
             weight,
+            smoothie: {
+                ...this.state.smoothie,
+                calories: kcal,
+            },
         });
     }
 
@@ -134,7 +141,7 @@ class SmoothieForm extends React.Component {
             price,
             kcal,
             smoothie,
-            smoothie: { name, smoothieComponents },
+            smoothie: { name, smoothieComponents, description, instructions },
         } = this.state;
 
         if (!smoothie) return;
@@ -151,6 +158,20 @@ class SmoothieForm extends React.Component {
                     type="text"
                     placeholder="Nimi"
                     onChange={e => this.handleValueUpdate(e, 'name')}
+                />
+                <input
+                    className="smoothieform__header form-text"
+                    value={description || ''}
+                    type="text"
+                    placeholder="Kirjeldus"
+                    onChange={e => this.handleValueUpdate(e, 'description')}
+                />
+                <input
+                    className="smoothieform__header form-text"
+                    value={instructions || ''}
+                    type="text"
+                    placeholder="Valmistamise õpetus"
+                    onChange={e => this.handleValueUpdate(e, 'instructions')}
                 />
                 {smoothieComponents &&
                     smoothieComponents.map((component, i) => {

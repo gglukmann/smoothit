@@ -26,6 +26,7 @@ const SmoothieComponent = props => {
                     })}
                 </select>
                 <button
+                    type="button"
                     className="btn--icon"
                     onClick={() => onSmoothieComponentUpdate(null)}
                 >
@@ -41,7 +42,7 @@ const SmoothieComponent = props => {
                     onChange={e =>
                         onSmoothieComponentUpdate({
                             ...component,
-                            amount: e.target.value,
+                            amount: parseInt(e.target.value, 10),
                         })
                     }
                 />

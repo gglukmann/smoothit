@@ -62,11 +62,15 @@ class SmoothieDetails extends React.Component {
             });
     }
 
-    saveSmoothie(smoothie) {
-        console.log(smoothie);
+    saveSmoothie = smoothie => {
+        const newSmoothie = {
+            ...smoothie,
+            id: 0,
+            file: null,
+        };
 
         fetch(API.smoothies, {
-            body: JSON.stringify(smoothie),
+            body: JSON.stringify(newSmoothie),
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -82,13 +86,20 @@ class SmoothieDetails extends React.Component {
             .then(data => {
                 const smoothies = JSON.parse(localStorage.getItem('smoothies'));
                 const index = smoothies.findIndex(item => item.id === data.id);
-                smoothies[index] = data;
+                if (index !== -1) {
+                    smoothies[index] = data;
+                } else {
+                    smoothies.push(data);
+                }
                 localStorage.setItem('smoothies', JSON.stringify(smoothies));
+                if (typeof this.props.onAddSmoothie === 'function') {
+                    this.props.onAddSmoothie(smoothies);
+                }
             })
             .catch(error => {
                 console.log(error);
             });
-    }
+    };
 
     render() {
         const { smoothie, componentList } = this.state;
