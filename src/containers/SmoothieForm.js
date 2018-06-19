@@ -98,7 +98,7 @@ class SmoothieForm extends React.Component {
     createShoppingList = () => {
         // Create order + load shopping list
         let data = {
-            servings: 1,
+            servings: this.state.smoothie.servings,
             components: this.state.smoothie.smoothieComponents.map(
                 ({ name, amount }) => {
                     return { name, quantity: amount };
@@ -120,7 +120,9 @@ class SmoothieForm extends React.Component {
                 return response.json();
             })
             .then(data => {
-                console.log('Order created, ID: ', data.id);
+                this.setState({
+                    shoppingList: data.components,
+                });
             })
             .catch(error => {
                 console.log(error);
@@ -201,6 +203,13 @@ class SmoothieForm extends React.Component {
                 <button type="submit" className="btn">
                     Salvesta
                 </button>
+                <input
+                    className="smoothieform__header form-text"
+                    type="text"
+                    placeholder="tk"
+                    onChange={e => this.handleValueUpdate(e, 'servings')}
+                />
+                tk
                 <button
                     type="button"
                     className="btn"
