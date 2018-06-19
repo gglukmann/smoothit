@@ -66,9 +66,12 @@ class SmoothieDetails extends React.Component {
     saveSmoothie = smoothie => {
         const newSmoothie = {
             ...smoothie,
-            id: 0,
             file: null,
         };
+
+        if (!newSmoothie.id) {
+            newSmoothie.id = 0;
+        }
 
         fetch(API.smoothies, {
             body: JSON.stringify(newSmoothie),
