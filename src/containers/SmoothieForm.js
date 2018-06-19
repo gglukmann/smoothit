@@ -217,10 +217,20 @@ class SmoothieForm extends React.Component {
 
 SmoothieForm.propTypes = {
     smoothie: PropTypes.object,
+    shoppingList: PropTypes.array,
+    weight: PropTypes.number,
+    price: PropTypes.number,
+    kcal: PropTypes.number,
+    isNew: PropTypes.bool,
 };
 
 SmoothieForm.defaultProps = {
     smoothie: {},
+    shoppingList: null,
+    weight: 0,
+    price: 0,
+    kcal: 0,
+    isNew: false,
 };
 
 export default SmoothieForm;

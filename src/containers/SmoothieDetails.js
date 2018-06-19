@@ -117,4 +117,16 @@ class SmoothieDetails extends React.Component {
     }
 }
 
+SmoothieDetails.propTypes = {
+    smoothie: PropTypes.object,
+    pathname: PropTypes.string,
+    componentList: PropTypes.array,
+}
+
+SmoothieDetails.defaultProps = {
+    smoothie: {},
+    pathname: null,
+    componentList: [],
+}
+
 export default SmoothieDetails;

@@ -94,4 +94,12 @@ class Home extends React.Component {
     }
 }
 
+Home.propTypes = {
+    smoothies: PropTypes.array,
+}
+
+Home.defaultProps = {
+    smoothies: [],
+}
+
 export default Home;
