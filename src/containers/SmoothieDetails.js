@@ -64,6 +64,30 @@ class SmoothieDetails extends React.Component {
 
     saveSmoothie(smoothie) {
         console.log(smoothie);
+
+        fetch(API.smoothies, {
+            body: JSON.stringify(smoothie),
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.status);
+                }
+
+                return response.json();
+            })
+            .then(data => {
+                const smoothies = JSON.parse(localStorage.getItem('smoothies'));
+                const index = smoothies.findIndex(item => item.id === data.id);
+                smoothies[index] = data;
+                localStorage.setItem('smoothies', JSON.stringify(smoothies));
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     render() {
