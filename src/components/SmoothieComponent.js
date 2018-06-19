@@ -45,7 +45,7 @@ const SmoothieComponent = props => {
                         })
                     }
                 />
-                <span>kg</span>
+                <span>{component.unit}</span>
             </div>
         </div>
     );

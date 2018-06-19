@@ -14,7 +14,10 @@ class SmoothieForm extends React.Component {
     };
 
     static getDerivedStateFromProps(props, state) {
-        if (Object.keys(state.smoothie).length === 0 || Object.keys(props.smoothie).length === 0) {
+        if (
+            Object.keys(state.smoothie).length === 0 ||
+            Object.keys(props.smoothie).length === 0
+        ) {
             return {
                 smoothie: props.smoothie,
             };
@@ -86,7 +89,7 @@ class SmoothieForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.onSmoothieSave(this.state.smoothie);
-    }
+    };
 
     render() {
         const {
@@ -100,10 +103,14 @@ class SmoothieForm extends React.Component {
         if (!smoothie) return;
 
         return (
-            <form onSubmit={this.handleSubmit} method="post" className="smoothieform">
+            <form
+                onSubmit={this.handleSubmit}
+                method="post"
+                className="smoothieform"
+            >
                 <input
                     className="smoothieform__header form-text"
-                    value={name}
+                    value={name || ''}
                     type="text"
                     placeholder="Nimi"
                     onChange={e => this.handleValueUpdate(e, 'name')}
@@ -127,6 +134,7 @@ class SmoothieForm extends React.Component {
                 <p>Kalorsus: {cal} kcal</p>
 
                 <button
+                    type="button"
                     className="btn--icon-lg btn--pink"
                     onClick={this.addSmoothieComponent}
                 >
@@ -135,7 +143,11 @@ class SmoothieForm extends React.Component {
                 <button type="submit" className="btn">
                     Salvesta
                 </button>
-                <button className="btn" onClick={this.createShoppingList}>
+                <button
+                    type="button"
+                    className="btn"
+                    onClick={this.createShoppingList}
+                >
                     Loo ostunimekiri
                 </button>
 
