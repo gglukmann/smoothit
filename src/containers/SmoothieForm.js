@@ -6,7 +6,7 @@ import API from '../common/globals';
 
 class SmoothieForm extends React.Component {
     state = {
-        smoothie: null,
+        smoothie: {},
         shoppingList: null,
         weight: 0,
         price: 0,
@@ -14,8 +14,7 @@ class SmoothieForm extends React.Component {
     };
 
     static getDerivedStateFromProps(props, state) {
-        if (!state.smoothie) {
-            console.log(props)
+        if (Object.keys(state.smoothie).length === 0 || Object.keys(props.smoothie).length === 0) {
             return {
                 smoothie: props.smoothie,
             };
@@ -101,7 +100,7 @@ class SmoothieForm extends React.Component {
         if (!smoothie) return;
 
         return (
-            <form onSubmit={this.handleSubmit} className="smoothieform">
+            <form onSubmit={this.handleSubmit} method="post" className="smoothieform">
                 <input
                     className="smoothieform__header form-text"
                     value={name}

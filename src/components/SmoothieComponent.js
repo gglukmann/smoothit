@@ -12,7 +12,7 @@ const SmoothieComponent = props => {
                     onChange={e =>
                         onSmoothieComponentUpdate(
                             componentList.find(
-                                x => x.id === parseInt(e.target.value),
+                                x => x.id === parseInt(e.target.value, 10),
                             ),
                         )
                     }
