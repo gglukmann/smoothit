@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';

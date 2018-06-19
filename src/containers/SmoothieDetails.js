@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { SmoothieForm } from './index';
 import API from '../common/globals';
