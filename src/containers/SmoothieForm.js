@@ -49,7 +49,7 @@ class SmoothieForm extends React.Component {
             return previous + components[key].unitPriceEur;
         }, 0);
         const weight = Object.keys(components).reduce((previous, key) => {
-            return previous + components[key].amount;
+            return previous + (components[key].amount || 1);
         }, 0);
 
         this.setState({

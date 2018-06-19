@@ -42,7 +42,7 @@ const SmoothieComponent = props => {
                     onChange={e =>
                         onSmoothieComponentUpdate({
                             ...component,
-                            amount: e.target.value,
+                            amount: parseInt(e.target.value, 10),
                         })
                     }
                 />
