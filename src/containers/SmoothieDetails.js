@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SmoothieForm } from './index';
-import { Smoothie } from '../components';
+import { Smoothie, Loader } from '../components';
 import API from '../common/globals';
 
 class SmoothieDetails extends React.Component {
@@ -10,6 +10,7 @@ class SmoothieDetails extends React.Component {
         smoothie: {},
         pathname: null,
         componentList: [],
+        isLoading: false,
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -65,6 +66,10 @@ class SmoothieDetails extends React.Component {
     }
 
     saveSmoothie = smoothie => {
+        this.setState({
+            isLoading: true,
+        });
+
         const newSmoothie = {
             ...smoothie,
             file: null,
@@ -89,11 +94,16 @@ class SmoothieDetails extends React.Component {
             })
             .catch(error => {
                 console.log(error);
+            })
+            .finally(() => {
+                this.setState({
+                    isLoading: false,
+                });
             });
     };
 
     render() {
-        const { smoothie, componentList } = this.state;
+        const { smoothie, componentList, isLoading } = this.state;
 
         return (
             <div className="container">
@@ -110,6 +120,7 @@ class SmoothieDetails extends React.Component {
                         />
                     </div>
                 </div>
+                {isLoading && <Loader />}
             </div>
         );
     }
@@ -120,12 +131,14 @@ SmoothieDetails.propTypes = {
     pathname: PropTypes.string,
     componentList: PropTypes.array,
     onSaveSmoothie: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
 }
 
 SmoothieDetails.defaultProps = {
     smoothie: {},
     pathname: null,
     componentList: [],
+    isLoading: false,
 }
 
 export default SmoothieDetails;

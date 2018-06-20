@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ShoppingList, SmoothieComponent } from '../components';
+import { ShoppingList, SmoothieComponent, Loader } from '../components';
 import API from '../common/globals';
 
 class SmoothieForm extends React.Component {
@@ -12,6 +12,7 @@ class SmoothieForm extends React.Component {
         price: 0,
         kcal: 0,
         isNew: false,
+        isLoading: true,
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -94,6 +95,10 @@ class SmoothieForm extends React.Component {
     };
 
     createShoppingList = () => {
+        this.setState({
+            isLoading: true,
+        });
+
         // Create order + load shopping list
         let data = {
             servings: this.state.smoothie.servings,
@@ -133,10 +138,19 @@ class SmoothieForm extends React.Component {
                     })
                     .catch(error => {
                         console.log(error);
+                    })
+                    .finally(() => {
+                        this.setState({
+                            isLoading: false,
+                        });
                     });
             })
             .catch(error => {
                 console.log(error);
+
+                this.setState({
+                    isLoading: false,
+                });
             });
     };
 
@@ -154,6 +168,7 @@ class SmoothieForm extends React.Component {
             kcal,
             smoothie,
             smoothie: { name, components, description, instructions },
+            isLoading,
         } = this.state;
 
         if (!smoothie) return;
@@ -216,7 +231,7 @@ class SmoothieForm extends React.Component {
                     onClick={this.addSmoothieComponent}
                     title="Lisa komponent"
                 >
-                    <i className="fa fa-plus" />
+                    <i className="fas fa-plus" />
                 </button>
                 <div>
                     <div className={`textfield ${isNew ? 'is-focused' : ''}`}>
@@ -307,11 +322,12 @@ class SmoothieForm extends React.Component {
                 {shoppingList &&
                     !isNew && (
                         <div className="grid">
-                            <div className="grid__col--sm-5">
+                            <div className="grid__col--md-6">
                                 <ShoppingList shoppingList={shoppingList} />
                             </div>
                         </div>
                     )}
+                {isLoading && <Loader />}
             </form>
         );
     }
@@ -324,6 +340,7 @@ SmoothieForm.propTypes = {
     price: PropTypes.number,
     kcal: PropTypes.number,
     isNew: PropTypes.bool,
+    isLoading: PropTypes.bool,
 };
 
 SmoothieForm.defaultProps = {
@@ -333,6 +350,7 @@ SmoothieForm.defaultProps = {
     price: 0,
     kcal: 0,
     isNew: false,
+    isLoading: false,
 };
 
 export default SmoothieForm;
