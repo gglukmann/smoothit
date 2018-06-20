@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';
-import { SmoothieTable } from '../components';
+import { SmoothieTable, Smoothie } from '../components';
 import smoothitLogo from '../assets/images/smoothit.png';
 
 class Home extends React.Component {
@@ -47,9 +47,12 @@ class Home extends React.Component {
         let smoothies = this.state.smoothies.map(item => (
             <li key={item.id}>
                 <Link to={`/smoothie/${item.id}`}>
+                    <Smoothie smoothie={item} />
+                    {/*
                     <div>{item.name}</div>
                     <div>{item.description}</div>
                     <div>Kaloreid: {item.calories}</div>
+                    */}
                 </Link>
             </li>
         ));

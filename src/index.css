@@ -190,3 +190,24 @@ body {
   background-position-y: -7px;
   margin-left: -1px;
 }
+
+/* SMOOTHIE */
+.smoothie {
+  display: inline-block;
+  position: relative;
+}
+
+.smoothie__colors {
+  top: 50%;
+  left: 50%;
+  transform: translate(-63%, -25%);
+  position: absolute;
+  height: 56%;
+  width: 55%;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  z-index: -1;
+}
+
+.smoothie__glass {
+  height: 200px;
+}

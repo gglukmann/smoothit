@@ -1,4 +1,5 @@
 import React from 'react';
+import glassSvg from '../assets/images/glass.svg';
 
 const Smoothie = ({ smoothie }) => {
     const getColors = components => {
@@ -22,14 +23,12 @@ const Smoothie = ({ smoothie }) => {
     };
 
     return (
-        <div
-            className="smoothie"
-            style={getColors(smoothie.smoothieComponents)}
-        >
-            <br />
-            <br />
-            <br />
-            <br />
+        <div className="smoothie">
+            <img className="smoothie__glass" src={glassSvg} alt="smoothie glass" />
+            <div
+                className="smoothie__colors"
+                style={getColors(smoothie.smoothieComponents)}
+            ></div>        
         </div>
     );
 };
