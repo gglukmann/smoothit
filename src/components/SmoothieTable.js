@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SmoothieTable = (props) => {
+const SmoothieTable = ({ className, children }) => {
     return (
-        <div className={`smoothietable ${props.className}`}>
+        <div className={`smoothietable ${className}`}>
             <div className="smoothietable__content">
-                {props.children}
+                {children}
             </div>
             <div className="smoothietable__shadow-container">
                 <div className="smoothietable__shadow smoothietable__shadow--left"></div>

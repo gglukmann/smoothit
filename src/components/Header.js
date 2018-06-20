@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smoothie } from '../components';
+import { Smoothie, SmoothieTable } from '../components';
 import smoothitLogo from '../assets/images/smoothit.png';
 import { Link } from 'react-router-dom';
 
@@ -13,15 +13,19 @@ const Header = (props) => {
     ));
 
     return (
-        <header className="row">
-            <Link to="/">
-                <img src={smoothitLogo} alt="SmoothIT" />
-            </Link>
-            <div className="col">
-                <Link to="/smoothie">
-                    <Smoothie smoothie={{}} />
+        <header className="container">
+            <div className="grid grid--between-xs">
+                <Link to="/">
+                    <img src={smoothitLogo} alt="SmoothIT" />
                 </Link>
-                {smoothies}
+                <div className="col">
+                    <SmoothieTable className="smoothietable--sm">
+                        <Link to="/smoothie">
+                            <Smoothie smoothie={{}} />
+                        </Link>
+                        {smoothies}
+                    </SmoothieTable>
+                </div>
             </div>
         </header>
     );

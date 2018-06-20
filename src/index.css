@@ -219,23 +219,34 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+/* HEADER */
+header {
+  padding-top: 0.75rem;
+}
+
 /* SMOOTHIE TABLE */
-.smoothietable--sm {
-  transform: scale(0.6);
-}
-
 .smoothietable__content {
-  padding-right: 160px;
-  padding-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  padding-left: 30px;
+  overflow-x: auto;
+  width: 100%;
 }
 
-.smoothietable__shadow-container { 
+.smoothietable--sm .smoothietable__content {
+  padding-right: 30px;
+}
+
+.smoothietable__shadow-container {
   display: flex;
   flex-wrap: nowrap;
+  margin-top: -15px;
 }
 
 .smoothietable__shadow {
   height: 130px;
+  background-repeat-y: no-repeat;
 }
 
 .smoothietable__shadow--left {
@@ -257,6 +268,21 @@ h1 {
   margin-left: -1px;
 }
 
+.smoothietable--sm .smoothietable__shadow--left {
+  width: 73px;
+  background-size: 79px;
+}
+
+.smoothietable--sm .smoothietable__shadow--right {
+  background-size: 81px;
+  width: 70px;
+  background-position-y: -3px;
+}
+
+.smoothietable--sm .smoothietable__shadow--center {
+  background-size: 22px;
+}
+
 /* SMOOTHIE */
 .smoothie {
   display: inline-block;
@@ -270,7 +296,7 @@ h1 {
 .smoothie__colors {
   display: flex;
   flex-direction: column;
-  top: 50%;
+  top: 49%;
   left: 50%;
   transform: translate(-63%, -25%);
   position: absolute;
@@ -287,7 +313,7 @@ h1 {
 }
 
 .smoothie__glass {
-  height: 150px;
+  height: 125px;
 }
 
 /* ==========================================================================
