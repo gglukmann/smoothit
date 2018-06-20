@@ -98,7 +98,7 @@ class SmoothieDetails extends React.Component {
         return (
             <div className="container">
                 <div className="grid">
-                    <div className="grid__col--sm-5">
+                    <div className="grid__col--sm-5 grid--center-xs">
                         <Smoothie size="lg" smoothie={smoothie} />
                     </div>
                     <div className="grid__col--sm-7">
