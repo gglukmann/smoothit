@@ -44,7 +44,7 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
             </div>
             {create && (
                 <div className="btn btn--icon-md btn--pink smoothie__btn">
-                    <i className="fa fa-plus" />
+                    <i className="fas fa-plus" />
                 </div>
             )}
         </div>

@@ -49,11 +49,6 @@ class Home extends React.Component {
             <li key={item.id}>
                 <Link to={`/smoothie/${item.id}`}>
                     <Smoothie smoothie={item} />
-                    {/*
-                    <div>{item.name}</div>
-                    <div>{item.description}</div>
-                    <div>Kaloreid: {item.calories}</div>
-                    */}
                 </Link>
             </li>
         ));

@@ -32,7 +32,7 @@ const SmoothieComponent = props => {
                         className="btn--icon"
                         onClick={() => onSmoothieComponentUpdate(null)}
                     >
-                        <i className="fa fa-minus" />
+                        <i className="fas fa-minus" />
                     </button>
                 </div>
             </div>
