@@ -417,6 +417,10 @@ header .smoothietable__shadow {
   transform: translate(-63%, 0);
 }
 
+.smoothie--md .smoothie__btn {
+  transform: translate(-75%, 0);
+}
+
 /* NOTE */
 .note {
   display: block;
