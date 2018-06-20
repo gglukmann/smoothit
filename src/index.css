@@ -268,11 +268,33 @@ header .smoothietable {
   margin-right: 50px;
   margin-left: 10px;
   overflow-x: auto;
-  max-width: 425px;
 }
 
-.smoothietable--sm .smoothietable__content {
-  padding-right: 30px;
+.smoothietable--sm {
+  max-width: 480px;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  .smoothietable__content {
+    max-width: 700px;
+  }
+}
+
+.smoothietable--sm .smoothietable__shadow {
+  height: 160px;
+}
+
+.smoothietable--sm .smoothietable__shadow--left {
+    width: 187px;
+    background-position-y: -1px;
+    margin-right: -1px;
+}
+
+.smoothietable--sm .smoothietable__shadow--right {
+    width: 198px;
+    background-position-y: -7px;
+    margin-left: -1px;
 }
 
 .smoothietable__shadow-container {
@@ -336,6 +358,11 @@ header .smoothietable {
   opacity: 0.5;
 }
 
+.smoothie--md .smoothie__glass {
+  height: 170px;
+  margin: 0;
+}
+
 .smoothie--lg .smoothie__glass {
   height: 600px;
   margin: 0;
@@ -391,6 +418,10 @@ header .smoothietable {
     margin-right: -0.75em;
     margin-left: -0.75em;
     margin-bottom: -1.5em;
+  }
+
+  .grid--direction-column {
+    flex-direction: column;
   }
   
   .grid--gutter-sm {

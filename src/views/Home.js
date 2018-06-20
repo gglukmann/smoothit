@@ -65,8 +65,6 @@ class Home extends React.Component {
             );
         }
 
-        console.log(this.props.location);
-
         return (
             <React.Fragment>
                 <Header location={this.props.location} smoothies={this.state.smoothies} />

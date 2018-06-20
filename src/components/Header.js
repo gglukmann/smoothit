@@ -13,6 +13,7 @@ const Header = (props) => {
     let smoothies = props.smoothies.map(item => (
         <Link key={`smoothielink_${item.id}`} to={`/smoothie/${item.id}`}>
             <Smoothie
+                size={path === '/' && 'md'}
                 smoothie={item}
                 inactive={isSmoothieInactive(path, item.id)} />
         </Link>
@@ -20,20 +21,18 @@ const Header = (props) => {
 
     return (
         <header className="container">
-            <div className="grid grid--between-xs">
+            <div className={`grid grid--between-xs ${path === '/' ? 'grid--direction-column' : ''}`}>
                 <Link to="/">
                     <img src={smoothitLogo} alt="SmoothIT" />
                 </Link>
-                { props.location.pathname !== '/' &&
                 <div className="col">
-                    <SmoothieTable className="smoothietable--sm">
+                    <SmoothieTable className={ path !== '/' ? 'smoothietable--sm' : '' }>
                         <Link to="/smoothie">
-                            <Smoothie create smoothie={{}} inactive={isSmoothieInactive(path)} />
+                            <Smoothie size={path === '/' && 'md'} create smoothie={{}} inactive={isSmoothieInactive(path)} />
                         </Link>
                         {smoothies}
                     </SmoothieTable>
                 </div>
-                }
             </div>
         </header>
     );
