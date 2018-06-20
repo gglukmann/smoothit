@@ -84,8 +84,8 @@ class SmoothieDetails extends React.Component {
 
                 return response.json();
             })
-            .then(() => {
-                this.props.onSaveSmoothie();
+            .then((data) => {
+                this.props.onSaveSmoothie(data.id);
             })
             .catch(error => {
                 console.log(error);
