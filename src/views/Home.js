@@ -17,7 +17,7 @@ class Home extends React.Component {
     }
 
     getSmoothies() {
-        fetch(API.smoothies)
+        return fetch(API.smoothies)
             .then(response => {
                 if (!response.ok) {
                     throw Error(response.status);
@@ -38,8 +38,10 @@ class Home extends React.Component {
             });
     }
 
-    saveSmoothie = () => {
-        this.getSmoothies();
+    saveSmoothie = (id) => {
+        this.getSmoothies().then(() => {
+            this.props.history.push(`/smoothie/${id}`);
+        });
     };
 
     render() {
