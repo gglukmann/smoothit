@@ -10,12 +10,21 @@ const Header = (props) => {
         return path.includes('/smoothie') && !(path.localeCompare(`/smoothie/${smoothieId}`) === 0);
     }
 
+    const scrollTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     let smoothies = props.smoothies.map(item => (
-        <Link key={`smoothielink_${item.id}`} to={`/smoothie/${item.id}`}>
+        <Link
+            onClick={scrollTop}
+            key={`smoothielink_${item.id}`}
+            to={`/smoothie/${item.id}`}
+        >
             <Smoothie
                 size={path === '/' && 'md'}
                 smoothie={item}
-                inactive={isSmoothieInactive(path, item.id)} />
+                inactive={isSmoothieInactive(path, item.id)}
+            />
         </Link>
     ));
 
@@ -27,8 +36,13 @@ const Header = (props) => {
                 </Link>
                 <div className="col">
                     <SmoothieTable className={ path !== '/' ? 'smoothietable--sm' : '' }>
-                        <Link to="/smoothie">
-                            <Smoothie size={path === '/' && 'md'} create smoothie={{}} inactive={isSmoothieInactive(path)} />
+                        <Link onClick={scrollTop} to="/smoothie">
+                            <Smoothie
+                                size={path === '/' && 'md'}
+                                create
+                                smoothie={{}}
+                                inactive={isSmoothieInactive(path)}
+                            />
                         </Link>
                         {smoothies}
                     </SmoothieTable>
