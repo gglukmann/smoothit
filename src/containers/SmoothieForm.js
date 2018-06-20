@@ -157,7 +157,6 @@ class SmoothieForm extends React.Component {
         } = this.state;
 
         if (!smoothie) return;
-        console.log(smoothie);
 
         return (
             <form

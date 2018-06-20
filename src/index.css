@@ -197,6 +197,10 @@ body {
   position: relative;
 }
 
+.smoothie--lg .smoothie__glass {
+  height: 600px;
+}
+
 .smoothie__colors {
   display: flex;
   flex-direction: column;
@@ -217,5 +221,19 @@ body {
 }
 
 .smoothie__glass {
-  height: 200px;
+  height: 150px;
+}
+
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex-grow: 1;
 }

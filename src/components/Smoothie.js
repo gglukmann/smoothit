@@ -1,7 +1,7 @@
 import React from 'react';
 import glassSvg from '../assets/images/glass.svg';
 
-const Smoothie = ({ smoothie }) => {
+const Smoothie = ({ smoothie, size }) => {
     const getColors = components => {
         if (!components) return;
 
@@ -24,7 +24,6 @@ const Smoothie = ({ smoothie }) => {
 
     const getColorRows = components => {
         if (!components) return <div className="smoothie__color"></div>;
-        console.log(components);
 
         function LightenDarkenColor(col, amt) {
   
@@ -65,8 +64,11 @@ const Smoothie = ({ smoothie }) => {
         });
     }
 
+    let smoothieClass = 'smoothie ';
+    if(size === 'lg') smoothieClass += 'smoothie--lg';
+
     return (
-        <div className="smoothie">
+        <div className={smoothieClass}>
             <img className="smoothie__glass" src={glassSvg} alt="smoothie glass" />
             <div
                 className="smoothie__colors"

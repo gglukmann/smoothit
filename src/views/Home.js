@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';
-import { SmoothieTable, Smoothie } from '../components';
+import { SmoothieTable, Smoothie, Header } from '../components';
 import smoothitLogo from '../assets/images/smoothit.png';
 
 class Home extends React.Component {
@@ -68,25 +68,7 @@ class Home extends React.Component {
 
         return (
             <React.Fragment>
-                <header>
-                    <Link to="/">
-                        <img src={smoothitLogo} alt="SmoothIT" />
-                    </Link>
-                    <SmoothieTable />
-                    <SmoothieTable className="smoothietable--sm" />
-                    {this.props.location.pathname === '/' && (
-                        <h1>Get your smoothie</h1>
-                    )}
-                </header>
-                <ul>
-                    <li>
-                        <Link to="/smoothie">
-                            <Smoothie smoothie={{}} />
-                        </Link>
-                    </li>
-                    {smoothies}
-                </ul>
-
+                <Header smoothies={this.state.smoothies} />
                 <Switch>
                     <Route
                         exact
