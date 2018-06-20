@@ -7,7 +7,7 @@ const Header = (props) => {
     const path = props.location.pathname;
     const isSmoothieInactive = (path, smoothieId) => {
         if(!smoothieId) return path.includes('/smoothie/');
-        return path.includes('/smoothie') && !path.localeCompare(`/smoothie/${smoothieId}`) == 0;
+        return path.includes('/smoothie') && !(path.localeCompare(`/smoothie/${smoothieId}`) === 0);
     }
 
     let smoothies = props.smoothies.map(item => (
