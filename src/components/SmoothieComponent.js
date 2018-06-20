@@ -7,7 +7,7 @@ const SmoothieComponent = props => {
         <div className="component">
             <div className="component__type">
                 <select
-                    className="form-select"
+                    className="select"
                     value={component.id}
                     onChange={e =>
                         onSmoothieComponentUpdate(

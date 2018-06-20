@@ -40,13 +40,13 @@ class SmoothieForm extends React.Component {
         if (!components) return;
 
         const kcal = components.reduce((previous, item) => {
-            return previous + item.kcalPerUnit * (item.amount || 1);
+            return previous + item.kcalPerUnit * item.amount;
         }, 0);
         const price = components.reduce((previous, item) => {
-            return previous + item.unitPriceEur;
+            return previous + item.unitPriceEur * item.amount;
         }, 0);
         const weight = components.reduce((previous, item) => {
-            return previous + (item.amount || 1);
+            return previous + item.amount;
         }, 0);
 
         this.setState({
@@ -164,65 +164,70 @@ class SmoothieForm extends React.Component {
                 method="post"
                 className="smoothieform margin"
             >
-                <input
-                    className="textfield textfield--large"
-                    value={name || ''}
-                    type="text"
-                    placeholder="Nimi"
-                    onChange={e => this.handleValueUpdate(e, 'name')}
-                />
-                <div className="grid">
-                    <div className="grid__col--sm-6">
+                <div className="grid grid--middle-sm">
+                    <div className="grid__col--sm-8">
                         <input
-                            className="textfield"
-                            value={description || ''}
+                            className="textfield textfield--large"
+                            value={name || ''}
                             type="text"
-                            placeholder="Kirjeldus"
-                            onChange={e =>
-                                this.handleValueUpdate(e, 'description')
-                            }
+                            placeholder="Nimi"
+                            onChange={e => this.handleValueUpdate(e, 'name')}
                         />
                     </div>
-                    <div className="grid__col--sm-6">
-                        <input
-                            className="textfield"
-                            value={instructions || ''}
-                            type="text"
-                            placeholder="Valmistamise õpetus"
-                            onChange={e =>
-                                this.handleValueUpdate(e, 'instructions')
-                            }
-                        />
+                    <div className="grid__col--sm-4">
+                        <h3>{kcal} kCal</h3>
                     </div>
                 </div>
-                {components &&
-                    components.map((component, i) => {
-                        return (
-                            <div>
-                                <SmoothieComponent
-                                    key={`smoothiecomponent_${i}`}
-                                    component={component}
-                                    componentList={componentList}
-                                    onSmoothieComponentUpdate={component =>
-                                        this.updateSmoothieComponent(
-                                            component,
-                                            i,
-                                        )
-                                    }
-                                />
-                            </div>
-                        );
-                    })}
-                <p>Hind: {price} €</p>
-                <p>Kogus: {weight} kg</p>
-                <p>Kalorsus: {kcal} kcal</p>
+                <div className="grid grid--bottom-sm smoothieform__relative">
+                    <hr className="smoothieform__separator" />
+                    <div className="grid__col--sm-6">
+                        {components &&
+                            components.map((component, i) => {
+                                return (
+                                    <SmoothieComponent
+                                        key={`smoothiecomponent_${i}`}
+                                        component={component}
+                                        componentList={componentList}
+                                        onSmoothieComponentUpdate={component =>
+                                            this.updateSmoothieComponent(
+                                                component,
+                                                i,
+                                            )
+                                        }
+                                    />
+                                );
+                            })}
+                    </div>
+                    <div className="grid__col--sm-6 grid--center-sm">
+                        <h1>{price} &euro;</h1>
+                    </div>
+                </div>
                 <button
                     type="button"
-                    className="btn--icon-lg btn--pink"
+                    className="btn btn--icon-lg btn--pink smoothiefrom__add-button"
                     onClick={this.addSmoothieComponent}
                 >
                     <i className="fa fa-plus" />
                 </button>
+                {/* <p>Kogus: {weight} kg</p> */}
+                <div>
+                    <input
+                        className="textfield"
+                        value={description || ''}
+                        type="text"
+                        placeholder="Kirjeldus"
+                        onChange={e => this.handleValueUpdate(e, 'description')}
+                    />
+                    <input
+                        className="textfield"
+                        value={instructions || ''}
+                        type="text"
+                        placeholder="Valmistamise õpetus"
+                        onChange={e =>
+                            this.handleValueUpdate(e, 'instructions')
+                        }
+                    />
+                </div>
                 <button type="submit" className="btn">
                     Salvesta
                 </button>
