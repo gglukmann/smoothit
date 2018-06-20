@@ -35,7 +35,7 @@ const SmoothieComponent = props => {
             </div>
             <div className="component__amount">
                 <input
-                    className="form-text"
+                    className="textfield textfield--small"
                     value={component.amount || ''}
                     placeholder="Kogus"
                     type="number"

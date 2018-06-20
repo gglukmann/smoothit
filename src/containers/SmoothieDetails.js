@@ -97,11 +97,11 @@ class SmoothieDetails extends React.Component {
 
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col">
+                <div className="grid">
+                    <div className="grid__col--sm-5">
                         <Smoothie size="lg" smoothie={smoothie} />
                     </div>
-                    <div className="col">
+                    <div className="grid__col--sm-7">
                         <SmoothieForm
                             smoothie={smoothie}
                             onSmoothieSave={this.saveSmoothie}

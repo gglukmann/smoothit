@@ -162,40 +162,55 @@ class SmoothieForm extends React.Component {
             <form
                 onSubmit={this.handleSubmit}
                 method="post"
-                className="smoothieform"
+                className="smoothieform margin"
             >
                 <input
-                    className="smoothieform__header form-text"
+                    className="textfield textfield--large"
                     value={name || ''}
                     type="text"
                     placeholder="Nimi"
                     onChange={e => this.handleValueUpdate(e, 'name')}
                 />
-                <input
-                    className="smoothieform__header form-text"
-                    value={description || ''}
-                    type="text"
-                    placeholder="Kirjeldus"
-                    onChange={e => this.handleValueUpdate(e, 'description')}
-                />
-                <input
-                    className="smoothieform__header form-text"
-                    value={instructions || ''}
-                    type="text"
-                    placeholder="Valmistamise õpetus"
-                    onChange={e => this.handleValueUpdate(e, 'instructions')}
-                />
+                <div className="grid">
+                    <div className="grid__col--sm-6">
+                        <input
+                            className="textfield"
+                            value={description || ''}
+                            type="text"
+                            placeholder="Kirjeldus"
+                            onChange={e =>
+                                this.handleValueUpdate(e, 'description')
+                            }
+                        />
+                    </div>
+                    <div className="grid__col--sm-6">
+                        <input
+                            className="textfield"
+                            value={instructions || ''}
+                            type="text"
+                            placeholder="Valmistamise õpetus"
+                            onChange={e =>
+                                this.handleValueUpdate(e, 'instructions')
+                            }
+                        />
+                    </div>
+                </div>
                 {components &&
                     components.map((component, i) => {
                         return (
-                            <SmoothieComponent
-                                key={`smoothiecomponent_${i}`}
-                                component={component}
-                                componentList={componentList}
-                                onSmoothieComponentUpdate={component =>
-                                    this.updateSmoothieComponent(component, i)
-                                }
-                            />
+                            <div>
+                                <SmoothieComponent
+                                    key={`smoothiecomponent_${i}`}
+                                    component={component}
+                                    componentList={componentList}
+                                    onSmoothieComponentUpdate={component =>
+                                        this.updateSmoothieComponent(
+                                            component,
+                                            i,
+                                        )
+                                    }
+                                />
+                            </div>
                         );
                     })}
                 <p>Hind: {price} €</p>
@@ -212,7 +227,7 @@ class SmoothieForm extends React.Component {
                     Salvesta
                 </button>
                 <input
-                    className="smoothieform__header form-text"
+                    className="textfield textfield--small"
                     type="text"
                     placeholder="tk"
                     onChange={e => this.handleValueUpdate(e, 'servings')}
