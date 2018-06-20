@@ -150,7 +150,6 @@ class SmoothieForm extends React.Component {
 
         const {
             shoppingList,
-            weight,
             price,
             kcal,
             smoothie,
@@ -218,7 +217,6 @@ class SmoothieForm extends React.Component {
                 >
                     <i className="fa fa-plus" />
                 </button>
-                {/* <p>Kogus: {weight} kg</p> */}
                 <div>
                     <div className={`textfield ${isNew ? 'is-focused' : ''}`}>
                         <label

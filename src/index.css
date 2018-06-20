@@ -252,12 +252,12 @@ header {
   padding-top: 0.75rem;
 }
 
-header .smoothietable {
+header .smoothietable__shadow {
   display: none;
 }
 
 @media only screen and (min-width: 800px) {
-  header .smoothietable {
+  header .smoothietable__shadow {
     display: block;
   }
 }
