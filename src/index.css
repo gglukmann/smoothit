@@ -398,6 +398,28 @@ header .smoothietable {
   transform: translate(-63%, 0);
 }
 
+/* NOTE */
+.note {
+  display: block;
+  background: #ffc;
+  font-family: 'Satisfy', cursive;
+  padding: 2rem;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+.note__list {
+  list-style: none;
+  padding: 0;
+}
+
+.note__list-item {
+  margin-bottom: 1rem;
+}
+
+.note__list-item:last-child {
+  margin-bottom: 0;
+}
+
 /* ==========================================================================
    Grid
    ========================================================================== */
@@ -1749,4 +1771,9 @@ header .smoothietable {
   border: 0;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+/* HELPERS */
+.text-highlight {
+  color: var(--pink);
 }

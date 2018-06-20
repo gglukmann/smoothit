@@ -22,6 +22,7 @@ class SmoothieForm extends React.Component {
                 weight: 0,
                 price: 0,
                 kcal: 0,
+                shoppingList: null,
             };
         }
 
@@ -305,7 +306,13 @@ class SmoothieForm extends React.Component {
                     </React.Fragment>
                 )}
                 {shoppingList &&
-                    !isNew && <ShoppingList shoppingList={shoppingList} />}
+                    !isNew && (
+                        <div className="grid">
+                            <div className="grid__col--sm-5">
+                                <ShoppingList shoppingList={shoppingList} />
+                            </div>
+                        </div>
+                    )}
             </form>
         );
     }
