@@ -263,22 +263,21 @@ header .smoothietable__shadow {
 }
 
 /* SMOOTHIE TABLE */
-.smoothietable__content {
-  display: flex;
-  margin-right: 50px;
-  margin-left: 10px;
-  overflow-x: auto;
-}
-
 .smoothietable--sm {
   max-width: 480px;
   margin-left: auto;
+  display: none;
 }
 
-@media only screen and (min-width: 1200px) {
-  .smoothietable__content {
-    max-width: 700px;
-  }
+.smoothietable__content {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow-x: auto;
+}
+
+.smoothietable--sm .smoothietable__content {
+  margin-right: 50px;
 }
 
 .smoothietable--sm .smoothietable__shadow {
@@ -340,6 +339,26 @@ header .smoothietable__shadow {
 
 .smoothietable--sm .smoothietable__shadow--center {
   background-size: 22px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .smoothietable--sm {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .smoothietable {
+    margin-top: 50px;
+  }
+
+  .smoothietable--sm {
+    display: block;
+  }
+
+  .smoothietable__content {
+    margin-right: 150px;
+  }
 }
 
 /* SMOOTHIE */
