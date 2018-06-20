@@ -1,7 +1,7 @@
 import React from 'react';
 import glassSvg from '../assets/images/glass.svg';
 
-const Smoothie = ({ smoothie, size }) => {
+const Smoothie = ({ smoothie, size, inactive, create }) => {
     const getColors = components => {
         if (!components) return;
 
@@ -56,16 +56,17 @@ const Smoothie = ({ smoothie, size }) => {
         }
 
         const colorRowData = components.map(item => { 
-            return { color: item.colorHex, amount: item.amount || 1 };
+            return { color: item.colorHex, amount: item.amount || 1, id: item.id };
         });
 
         return colorRowData.map(row => {
-            return (<div className="smoothie__color" style={{flexGrow: row.amount, background: `linear-gradient(to top, ${LightenDarkenColor(row.color, 25)}, ${row.color}, ${row.color})`}}></div>)
+            return (<div key={`smoothie_${row.id}`} className="smoothie__color" style={{flexGrow: row.amount, background: `linear-gradient(to top, ${LightenDarkenColor(row.color, 25)}, ${row.color}, ${row.color})`}}></div>)
         });
     }
 
     let smoothieClass = 'smoothie ';
-    if(size === 'lg') smoothieClass += 'smoothie--lg';
+    if(size === 'lg') smoothieClass += 'smoothie--lg ';
+    if(inactive) smoothieClass += 'smoothie--inactive ';
 
     return (
         <div className={smoothieClass}>
@@ -75,7 +76,12 @@ const Smoothie = ({ smoothie, size }) => {
                 /*style={getColors(smoothie.smoothieComponents)}*/
             >
                 {getColorRows(smoothie.components)}
-            </div>        
+            </div>
+            { create &&
+                <div className="btn btn--icon-md btn--pink smoothie__btn" >
+                    <i className="fa fa-plus" />
+                </div>
+            }
         </div>
     );
 };

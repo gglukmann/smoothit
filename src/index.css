@@ -207,9 +207,15 @@ h1 {
 }
 
 .btn--icon {
-  height: 17px;
-  width: 17px;
+  height: 1rem;
+  width: 1rem;
   font-size: 8px;
+}
+
+.btn--icon-md {
+  height: 1.475rem;
+  width: 1.475rem;
+  font-size: 12px;
 }
 
 .btn--icon-lg {
@@ -219,14 +225,17 @@ h1 {
 }
 
 .btn--icon,
+.btn--icon-md,
 .btn--icon-lg {
   border: none;
   position: relative;
-  border-radius: 50%;
   cursor:pointer;
+  border-radius: var(--corner-radius);
+  padding: 0;
 }
 
 .btn--icon svg,
+.btn--icon-md svg,
 .btn--icon-lg svg {
   position: absolute;
   top: 50%;
@@ -302,10 +311,16 @@ header {
 .smoothie {
   display: inline-block;
   position: relative;
+  margin: 0 .25rem;
+}
+
+.smoothie--inactive {
+  opacity: 0.5;
 }
 
 .smoothie--lg .smoothie__glass {
   height: 600px;
+  margin: 0;
 }
 
 .smoothie__colors {
@@ -329,6 +344,13 @@ header {
 
 .smoothie__glass {
   height: 125px;
+}
+
+.smoothie__btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-63%, 0);
 }
 
 /* ==========================================================================

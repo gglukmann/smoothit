@@ -68,7 +68,7 @@ class Home extends React.Component {
 
         return (
             <React.Fragment>
-                <Header smoothies={this.state.smoothies} />
+                <Header location={this.props.location} smoothies={this.state.smoothies} />
                 <Switch>
                     <Route
                         exact
