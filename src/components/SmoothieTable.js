@@ -3,6 +3,7 @@ import React from 'react';
 const SmoothieTable = ({ className, children }) => {
     return (
         <div className={`smoothietable ${className}`}>
+            <h2 className="smoothietable__header">Vali oma smuuti!</h2>
             <div className="smoothietable__content">
                 {children}
             </div>
