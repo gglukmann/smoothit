@@ -337,6 +337,12 @@ header .smoothietable__shadow {
     margin-left: 10px;
     margin-right: 10px;
     overflow-x: auto;
+    flex-wrap: wrap;
+}
+
+.smoothietable__content a {
+    width: 50%;
+    text-align: center;
 }
 
 .smoothietable--sm .smoothietable__content {
@@ -423,6 +429,12 @@ header .smoothietable__shadow {
 
     .smoothietable__content {
         margin-right: 150px;
+        flex-wrap: nowrap;
+    }
+
+    .smoothietable__content a {
+        width: auto;
+        text-align: initial;
     }
 }
 
