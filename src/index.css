@@ -87,7 +87,15 @@ h1 {
 }
 
 .smoothiefrom__add-button {
-  margin-left: -3rem;
+  position: absolute;
+  top: 0;
+}
+
+@media (min-width: 800px) {
+  .smoothiefrom__add-button {
+    position: static;
+    margin-left: -3.25rem;
+  }
 }
 
 .smoothieform__separator {
@@ -224,8 +232,8 @@ h1 {
 }
 
 .btn--icon-lg {
-  height: 1.875rem;
-  width: 1.875rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .btn--icon,
@@ -378,13 +386,19 @@ header .smoothietable__shadow {
 }
 
 .smoothie--md .smoothie__glass {
-  height: 170px;
+  height: 10.625rem;
   margin: 0;
 }
 
 .smoothie--lg .smoothie__glass {
-  height: 600px;
+  height: 18.75rem;
   margin: 0;
+}
+
+@media (min-width: 800px) {
+  .smoothie--lg .smoothie__glass {
+    height: 37.5rem;
+  }
 }
 
 .smoothie__colors {

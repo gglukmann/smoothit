@@ -188,7 +188,7 @@ class SmoothieForm extends React.Component {
                 </div>
                 <div className="grid grid--bottom-sm smoothieform__relative">
                     <hr className="smoothieform__separator" />
-                    <div className="grid__col--sm-6">
+                    <div className="grid__col--md-6">
                         {components &&
                             components.map((component, i) => {
                                 return (
@@ -206,7 +206,7 @@ class SmoothieForm extends React.Component {
                                 );
                             })}
                     </div>
-                    <div className="grid__col--sm-6 grid--center-sm">
+                    <div className="grid__col--md-6 grid--center-xs">
                         <h1>{price} &euro;</h1>
                     </div>
                 </div>
@@ -214,6 +214,7 @@ class SmoothieForm extends React.Component {
                     type="button"
                     className="btn btn--icon-lg btn--pink smoothiefrom__add-button"
                     onClick={this.addSmoothieComponent}
+                    title="Lisa komponent"
                 >
                     <i className="fa fa-plus" />
                 </button>
