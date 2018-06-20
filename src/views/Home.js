@@ -80,7 +80,9 @@ class Home extends React.Component {
                 </header>
                 <ul>
                     <li>
-                        <Link to="/smoothie">Uus</Link>
+                        <Link to="/smoothie">
+                            <Smoothie smoothie={{}} />
+                        </Link>
                     </li>
                     {smoothies}
                 </ul>

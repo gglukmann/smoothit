@@ -35,7 +35,7 @@ class SmoothieForm extends React.Component {
     }
 
     calculateSmoothie() {
-        const components = this.state.smoothie.smoothieComponents;
+        const components = this.state.smoothie.components;
 
         if (!components) return;
 
@@ -72,9 +72,9 @@ class SmoothieForm extends React.Component {
         const smoothie = { ...this.state.smoothie };
 
         if (component) {
-            smoothie.smoothieComponents[index] = component;
+            smoothie.components[index] = component;
         } else {
-            smoothie.smoothieComponents.splice(index, 1);
+            smoothie.components.splice(index, 1);
         }
 
         this.setState({ smoothie }, () => this.calculateSmoothie());
@@ -83,11 +83,11 @@ class SmoothieForm extends React.Component {
     addSmoothieComponent = () => {
         const smoothie = { ...this.state.smoothie };
 
-        if (!smoothie.smoothieComponents) {
-            smoothie.smoothieComponents = [];
+        if (!smoothie.components) {
+            smoothie.components = [];
         }
 
-        smoothie.smoothieComponents.push(this.props.componentList[0]);
+        smoothie.components.push(this.props.componentList[0]);
 
         this.setState({ smoothie }, () => this.calculateSmoothie());
     };
@@ -96,7 +96,7 @@ class SmoothieForm extends React.Component {
         // Create order + load shopping list
         let data = {
             servings: this.state.smoothie.servings,
-            components: this.state.smoothie.smoothieComponents.map(
+            components: this.state.smoothie.components.map(
                 ({ name, amount }) => {
                     return { name, quantity: amount };
                 },
@@ -153,10 +153,11 @@ class SmoothieForm extends React.Component {
             price,
             kcal,
             smoothie,
-            smoothie: { name, smoothieComponents, description, instructions },
+            smoothie: { name, components, description, instructions },
         } = this.state;
 
         if (!smoothie) return;
+        console.log(smoothie);
 
         return (
             <form
@@ -185,8 +186,8 @@ class SmoothieForm extends React.Component {
                     placeholder="Valmistamise õpetus"
                     onChange={e => this.handleValueUpdate(e, 'instructions')}
                 />
-                {smoothieComponents &&
-                    smoothieComponents.map((component, i) => {
+                {components &&
+                    components.map((component, i) => {
                         return (
                             <SmoothieComponent
                                 key={`smoothiecomponent_${i}`}

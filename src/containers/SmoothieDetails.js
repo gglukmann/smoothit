@@ -70,10 +70,6 @@ class SmoothieDetails extends React.Component {
             file: null,
         };
 
-        if (!newSmoothie.id) {
-            newSmoothie.id = 0;
-        }
-
         fetch(API.smoothies, {
             body: JSON.stringify(newSmoothie),
             method: 'POST',

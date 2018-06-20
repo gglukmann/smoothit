@@ -198,6 +198,8 @@ body {
 }
 
 .smoothie__colors {
+  display: flex;
+  flex-direction: column;
   top: 50%;
   left: 50%;
   transform: translate(-63%, -25%);
@@ -206,6 +208,12 @@ body {
   width: 55%;
   clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   z-index: -1;
+}
+
+.smoothie__color {
+  background: var(--grey-l);
+  flex-grow: 1;
+  margin-bottom: -1px;
 }
 
 .smoothie__glass {
