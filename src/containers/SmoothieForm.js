@@ -145,7 +145,7 @@ class SmoothieForm extends React.Component {
     };
 
     render() {
-        const { componentList } = this.props;
+        const { componentList, isNew } = this.props;
 
         const {
             shoppingList,
@@ -166,7 +166,11 @@ class SmoothieForm extends React.Component {
             >
                 <div className="grid grid--middle-sm">
                     <div className="grid__col--sm-8">
-                        <div className="textfield textfield--large">
+                        <div
+                            className={`textfield textfield--large ${
+                                isNew ? 'is-focused' : ''
+                            }`}
+                        >
                             <input
                                 className="textfield__input"
                                 value={name || ''}
@@ -215,37 +219,35 @@ class SmoothieForm extends React.Component {
                 </button>
                 {/* <p>Kogus: {weight} kg</p> */}
                 <div>
-                    <div className="textfield">
+                    <div className={`textfield ${isNew ? 'is-focused' : ''}`}>
                         <label
                             className="textfield__label"
                             htmlFor="description"
                         >
-                            Kirjeldus:
+                            Kirjeldus
                         </label>
                         <input
                             id="description"
                             className="textfield__input"
                             value={description || ''}
                             type="text"
-                            placeholder="Kirjeldus"
                             onChange={e =>
                                 this.handleValueUpdate(e, 'description')
                             }
                         />
                     </div>
-                    <div className="textfield">
+                    <div className={`textfield ${isNew ? 'is-focused' : ''}`}>
                         <label
                             className="textfield__label"
                             htmlFor="instructions"
                         >
-                            Valmistamise õpetus:
+                            Valmistamise õpetus
                         </label>
                         <input
                             id="instructions"
                             className="textfield__input"
                             value={instructions || ''}
                             type="text"
-                            placeholder="Valmistamise õpetus"
                             onChange={e =>
                                 this.handleValueUpdate(e, 'instructions')
                             }
@@ -255,23 +257,55 @@ class SmoothieForm extends React.Component {
                 <button type="submit" className="btn">
                     Salvesta
                 </button>
-                <div className="textfield textfield--small">
-                    <input
-                        className="textfield__input"
-                        type="text"
-                        placeholder="tk"
-                        onChange={e => this.handleValueUpdate(e, 'servings')}
-                    />
-                </div>
-                tk
-                <button
-                    type="button"
-                    className="btn"
-                    onClick={this.createShoppingList}
-                >
-                    Loo ostunimekiri
-                </button>
-                {shoppingList && <ShoppingList shoppingList={shoppingList} />}
+                {!isNew && (
+                    <React.Fragment>
+                        <hr className="separator" />
+                        <div className="grid grid--middle-xs">
+                            <div className="grid__col--xs">
+                                <div className="grid grid--middle-xs">
+                                    <div className="grid__col--xs">
+                                        <div
+                                            className={`textfield textfield--small ${
+                                                isNew ? 'is-focused' : ''
+                                            }`}
+                                        >
+                                            <label
+                                                className="textfield__label"
+                                                htmlFor="tk"
+                                            >
+                                                Smuuti kogus
+                                            </label>
+                                            <input
+                                                id="tk"
+                                                className="textfield__input"
+                                                type="text"
+                                                placeholder="tk"
+                                                onChange={e =>
+                                                    this.handleValueUpdate(
+                                                        e,
+                                                        'servings',
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="grid__col--xs">tk</div>
+                                </div>
+                            </div>
+                            <div className="grid__col--xs">
+                                <button
+                                    type="button"
+                                    className="btn"
+                                    onClick={this.createShoppingList}
+                                >
+                                    Loo ostunimekiri
+                                </button>
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )}
+                {shoppingList &&
+                    !isNew && <ShoppingList shoppingList={shoppingList} />}
             </form>
         );
     }
