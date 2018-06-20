@@ -166,13 +166,17 @@ class SmoothieForm extends React.Component {
             >
                 <div className="grid grid--middle-sm">
                     <div className="grid__col--sm-8">
-                        <input
-                            className="textfield textfield--large"
-                            value={name || ''}
-                            type="text"
-                            placeholder="Nimi"
-                            onChange={e => this.handleValueUpdate(e, 'name')}
-                        />
+                        <div className="textfield textfield--large">
+                            <input
+                                className="textfield__input"
+                                value={name || ''}
+                                type="text"
+                                placeholder="Nimi"
+                                onChange={e =>
+                                    this.handleValueUpdate(e, 'name')
+                                }
+                            />
+                        </div>
                     </div>
                     <div className="grid__col--sm-4">
                         <h3>{kcal} kCal</h3>
@@ -211,32 +215,54 @@ class SmoothieForm extends React.Component {
                 </button>
                 {/* <p>Kogus: {weight} kg</p> */}
                 <div>
-                    <input
-                        className="textfield"
-                        value={description || ''}
-                        type="text"
-                        placeholder="Kirjeldus"
-                        onChange={e => this.handleValueUpdate(e, 'description')}
-                    />
-                    <input
-                        className="textfield"
-                        value={instructions || ''}
-                        type="text"
-                        placeholder="Valmistamise õpetus"
-                        onChange={e =>
-                            this.handleValueUpdate(e, 'instructions')
-                        }
-                    />
+                    <div className="textfield">
+                        <label
+                            className="textfield__label"
+                            htmlFor="description"
+                        >
+                            Kirjeldus:
+                        </label>
+                        <input
+                            id="description"
+                            className="textfield__input"
+                            value={description || ''}
+                            type="text"
+                            placeholder="Kirjeldus"
+                            onChange={e =>
+                                this.handleValueUpdate(e, 'description')
+                            }
+                        />
+                    </div>
+                    <div className="textfield">
+                        <label
+                            className="textfield__label"
+                            htmlFor="instructions"
+                        >
+                            Valmistamise õpetus:
+                        </label>
+                        <input
+                            id="instructions"
+                            className="textfield__input"
+                            value={instructions || ''}
+                            type="text"
+                            placeholder="Valmistamise õpetus"
+                            onChange={e =>
+                                this.handleValueUpdate(e, 'instructions')
+                            }
+                        />
+                    </div>
                 </div>
                 <button type="submit" className="btn">
                     Salvesta
                 </button>
-                <input
-                    className="textfield textfield--small"
-                    type="text"
-                    placeholder="tk"
-                    onChange={e => this.handleValueUpdate(e, 'servings')}
-                />
+                <div className="textfield textfield--small">
+                    <input
+                        className="textfield__input"
+                        type="text"
+                        placeholder="tk"
+                        onChange={e => this.handleValueUpdate(e, 'servings')}
+                    />
+                </div>
                 tk
                 <button
                     type="button"
