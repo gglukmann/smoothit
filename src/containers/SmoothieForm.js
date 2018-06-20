@@ -12,7 +12,7 @@ class SmoothieForm extends React.Component {
         price: 0,
         kcal: 0,
         isNew: false,
-        isLoading: true,
+        isLoading: false,
     };
 
     static getDerivedStateFromProps(props, state) {
