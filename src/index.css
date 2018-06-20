@@ -100,6 +100,11 @@ h1 {
 }
 
 /* FORM: TEXTFIELD */
+.textfield {
+  display: flex;
+  flex-direction: column;
+}
+
 .textfield__input {
   border: 2px solid transparent;
   border-radius: var(--corner-radius);
@@ -110,6 +115,7 @@ h1 {
   margin-left: calc(2 * -.625rem);
 }
 
+.textfield.is-focused .textfield__input,
 .textfield__input:hover,
 .textfield__input:focus {
   border-color: var(--grey-l);
@@ -188,13 +194,13 @@ h1 {
 /* BUTTON */
 .btn {
   background-color: var(--blue);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: var(--corner-radius);
   outline: none;
   cursor: pointer;
-  padding: 5px 15px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: .625rem 2rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .btn--pink {
@@ -203,25 +209,23 @@ h1 {
 }
 
 .btn:hover {
-  border-color: var(--grey);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
 }
 
 .btn--icon {
   height: 1rem;
   width: 1rem;
-  font-size: 8px;
 }
 
 .btn--icon-md {
   height: 1.475rem;
   width: 1.475rem;
-  font-size: 12px;
+  font-size: .75rem;
 }
 
 .btn--icon-lg {
   height: 1.875rem;
   width: 1.875rem;
-  font-size: 14px;
 }
 
 .btn--icon,
@@ -1704,4 +1708,14 @@ header .smoothietable {
 
 .margin > :first-child {
   margin-top: 0;
+}
+
+/* SEPARATOR */
+.separator {
+  height: 1px;
+  background: #ddd;
+  font-size: 0;
+  border: 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
