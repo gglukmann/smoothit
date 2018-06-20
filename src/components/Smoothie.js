@@ -66,6 +66,7 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
 
     let smoothieClass = 'smoothie ';
     if(size === 'lg') smoothieClass += 'smoothie--lg ';
+    if(size === 'md') smoothieClass += 'smoothie--md ';
     if(inactive) smoothieClass += 'smoothie--inactive ';
 
     return (
