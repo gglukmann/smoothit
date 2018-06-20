@@ -4,12 +4,17 @@ import smoothitLogo from '../assets/images/smoothit.png';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
+    const path = props.location.pathname;
+    const isSmoothieInactive = (path, smoothieId) => {
+        if(!smoothieId) return path.includes('/smoothie/');
+        return path.includes('/smoothie') && !path.localeCompare(`/smoothie/${smoothieId}`) == 0;
+    }
 
     let smoothies = props.smoothies.map(item => (
         <Link key={`smoothielink_${item.id}`} to={`/smoothie/${item.id}`}>
             <Smoothie
                 smoothie={item}
-                inactive={props.location.pathname.includes('/smoothie') && !props.location.pathname.includes('/smoothie/' + item.id)} />
+                inactive={isSmoothieInactive(path, item.id)} />
         </Link>
     ));
 
@@ -19,14 +24,16 @@ const Header = (props) => {
                 <Link to="/">
                     <img src={smoothitLogo} alt="SmoothIT" />
                 </Link>
+                { props.location.pathname !== '/' &&
                 <div className="col">
                     <SmoothieTable className="smoothietable--sm">
                         <Link to="/smoothie">
-                            <Smoothie create smoothie={{}} inactive={props.location.pathname.includes('/smoothie/')} />
+                            <Smoothie create smoothie={{}} inactive={isSmoothieInactive(path)} />
                         </Link>
                         {smoothies}
                     </SmoothieTable>
                 </div>
+                }
             </div>
         </header>
     );

@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';
-import { SmoothieTable, Smoothie, Header } from '../components';
-import smoothitLogo from '../assets/images/smoothit.png';
+import { Smoothie, Header } from '../components';
 
 class Home extends React.Component {
     state = {
@@ -65,6 +64,8 @@ class Home extends React.Component {
                 </li>
             );
         }
+
+        console.log(this.props.location);
 
         return (
             <React.Fragment>
