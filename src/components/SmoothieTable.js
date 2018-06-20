@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SmoothieTable = ({ className, children }) => {
     return (
@@ -14,6 +15,11 @@ const SmoothieTable = ({ className, children }) => {
             </div>
         </div>
     );
+}
+
+SmoothieTable.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node,
 }
 
 export default SmoothieTable;

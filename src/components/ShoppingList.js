@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const ShoppingList = props => {
     const { shoppingList } = props;
@@ -37,5 +38,13 @@ const ShoppingList = props => {
         </div>
     );
 };
+
+ShoppingList.propTypes = {
+    shoppingList: PropTypes.object,
+}
+
+ShoppingList.defaultProps = {
+    shoppingList: null,
+}
 
 export default ShoppingList;

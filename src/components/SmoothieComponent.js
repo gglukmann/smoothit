@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SmoothieComponent = props => {
     const { component, componentList, onSmoothieComponentUpdate } = props;
@@ -55,5 +56,17 @@ const SmoothieComponent = props => {
         </div>
     );
 };
+
+SmoothieComponent.propTypes = {
+    component: PropTypes.object.isRequired,
+    componentList: PropTypes.array.isRequired,
+    onSmoothieComponentUpdate: PropTypes.func.isRequired,
+}
+
+SmoothieComponent.defaultProps = {
+    component: {},
+    componentList: [],
+    onSmoothieComponentUpdate: () => {},
+}
 
 export default SmoothieComponent;
