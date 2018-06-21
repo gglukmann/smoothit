@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import API from '../common/globals';
 import { SmoothieDetails } from '../containers';
-import { Smoothie, Header } from '../components';
+import { Header } from '../components';
 
 class Home extends React.Component {
     state = {
@@ -45,26 +45,12 @@ class Home extends React.Component {
     };
 
     render() {
-        let smoothies = this.state.smoothies.map(item => (
-            <li key={item.id}>
-                <Link to={`/smoothie/${item.id}`}>
-                    <Smoothie smoothie={item} />
-                </Link>
-            </li>
-        ));
-
-        if (!smoothies.length) {
-            smoothies = (
-                <li>
-                    Smuutid said otsa. Palun proovige hiljem uuesti või lisage
-                    uus smuuti.
-                </li>
-            );
-        }
+        const { location } = this.props;
+        const { smoothies } = this.state;
 
         return (
             <React.Fragment>
-                <Header location={this.props.location} smoothies={this.state.smoothies} />
+                <Header location={location} smoothies={smoothies} />
                 <Switch>
                     <Route
                         exact

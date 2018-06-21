@@ -127,18 +127,11 @@ class SmoothieDetails extends React.Component {
 }
 
 SmoothieDetails.propTypes = {
-    smoothie: PropTypes.object,
-    pathname: PropTypes.string,
-    componentList: PropTypes.array,
     onSaveSmoothie: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool,
 }
 
 SmoothieDetails.defaultProps = {
-    smoothie: {},
-    pathname: null,
-    componentList: [],
-    isLoading: false,
+    onSaveSmoothie: () => {},
 }
 
 export default SmoothieDetails;

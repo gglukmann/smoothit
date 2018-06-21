@@ -8,6 +8,7 @@ import smoothitLogo from '../assets/images/smoothit.png';
 const Header = ({ location: { pathname }, smoothies }) => {
     const isSmoothieInactive = (path, smoothieId) => {
         if (!smoothieId) return path.includes('/smoothie/');
+
         return (
             path.includes('/smoothie') &&
             !(path.localeCompare(`/smoothie/${smoothieId}`) === 0)
@@ -35,14 +36,14 @@ const Header = ({ location: { pathname }, smoothies }) => {
                         <Link onClick={scrollTop} to="/smoothie">
                             <Smoothie
                                 size={pathname === '/' ? 'md' : ''}
-                                create={true}
+                                create
                                 inactive={isSmoothieInactive(pathname)}
                             />
                         </Link>
                         {smoothies.map(item => (
                             <Link
                                 onClick={scrollTop}
-                                key={`smoothielink_${item.id}`}
+                                key={item.id}
                                 to={`/smoothie/${item.id}`}
                             >
                                 <Smoothie

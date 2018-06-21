@@ -40,7 +40,7 @@ const ShoppingList = props => {
 };
 
 ShoppingList.propTypes = {
-    shoppingList: PropTypes.object,
+    shoppingList: PropTypes.object.isRequired,
 }
 
 ShoppingList.defaultProps = {

@@ -5,10 +5,14 @@ import glassSvg from '../assets/images/glass.svg';
 import { lightenDarkenColor } from '../common/utils';
 
 const Smoothie = ({ smoothie, size, inactive, create }) => {
-    let smoothieClass = 'smoothie ';
-    if (size === 'lg') smoothieClass += 'smoothie--lg ';
-    if (size === 'md') smoothieClass += 'smoothie--md ';
-    if (inactive) smoothieClass += 'smoothie--inactive ';
+    const BEM = (size, inactive) => {
+        let smoothieClass = 'smoothie ';
+        if (size === 'lg') smoothieClass += 'smoothie--lg ';
+        if (size === 'md') smoothieClass += 'smoothie--md ';
+        if (inactive) smoothieClass += 'smoothie--inactive ';
+
+        return smoothieClass;
+    };
 
     const getColorRows = components => {
         return components.map(component => {
@@ -29,7 +33,7 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
     };
 
     return (
-        <div className={smoothieClass}>
+        <div className={BEM(size, inactive)}>
             <img
                 className="smoothie__glass"
                 src={glassSvg}
@@ -52,7 +56,7 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
 };
 
 Smoothie.propTypes = {
-    smoothie: PropTypes.object,
+    smoothie: PropTypes.object.isRequired,
     size: PropTypes.string,
     inactive: PropTypes.bool,
     create: PropTypes.bool,
@@ -60,9 +64,6 @@ Smoothie.propTypes = {
 
 Smoothie.defaultProps = {
     smoothies: {},
-    size: null,
-    inactive: false,
-    create: false,
 };
 
 export default Smoothie;

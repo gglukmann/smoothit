@@ -100,7 +100,7 @@ class SmoothieForm extends React.Component {
         });
 
         // Create order + load shopping list
-        let data = {
+        const data = {
             servings: this.state.smoothie.servings,
             components: this.state.smoothie.components.map(
                 ({ name, amount }) => {
@@ -172,6 +172,7 @@ class SmoothieForm extends React.Component {
         } = this.state;
 
         if (!smoothie) return;
+
         return (
             <form
                 onSubmit={this.handleSubmit}
@@ -333,23 +334,17 @@ class SmoothieForm extends React.Component {
 }
 
 SmoothieForm.propTypes = {
-    smoothie: PropTypes.object,
-    shoppingList: PropTypes.array,
-    weight: PropTypes.number,
-    price: PropTypes.number,
-    kcal: PropTypes.number,
-    isNew: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    smoothie: PropTypes.object.isRequired,
+    componentList: PropTypes.array.isRequired,
+    isNew: PropTypes.bool.isRequired,
+    onSmoothieSave: PropTypes.func.isRequired,
 };
 
 SmoothieForm.defaultProps = {
     smoothie: {},
-    shoppingList: null,
-    weight: 0,
-    price: 0,
-    kcal: 0,
+    componentList: null,
     isNew: false,
-    isLoading: false,
+    onSmoothieSave: () => {},
 };
 
 export default SmoothieForm;

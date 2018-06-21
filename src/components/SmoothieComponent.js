@@ -29,7 +29,7 @@ const SmoothieComponent = props => {
                     </select>
                     <button
                         type="button"
-                        className="btn--icon"
+                        className="btn btn--icon"
                         onClick={() => onSmoothieComponentUpdate(null)}
                     >
                         <i className="fas fa-minus" />
