@@ -25,7 +25,7 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
                         background: `linear-gradient(to top, ${lightenDarkenColor(
                             component.colorHex,
                             25,
-                        )}, ${component.colorHex}, ${component.colorHex})`,
+                        )} 30%, ${component.colorHex} 70%)`,
                     }}
                 />
             );

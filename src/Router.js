@@ -6,7 +6,9 @@ import { Home, NotFound } from './views';
 const Router = () => (
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/smoothie" component={Home} />
+            <Route exact path="/smoothie/:id" component={Home} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>
