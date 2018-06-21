@@ -25,81 +25,25 @@ class SmoothieDetails extends React.Component {
     }
 
     componentDidMount() {
-        this.getSmoothie();
-        this.getSmoothieComponents();
+        // TODO: get smoothies and components
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.location.pathname !== this.state.pathname) {
-            this.getSmoothie();
-        }
+        // TODO: update smoothies
     }
 
     getSmoothie() {
-        const smoothies = JSON.parse(localStorage.getItem('smoothies'));
-        const smoothie = smoothies.filter(
-            item => item.id === parseInt(this.props.match.params.id, 10),
-        );
-
-        this.setState({
-            smoothie: smoothie[0] || {},
-        });
+        // TODO: get smoothie from localStorage array and add to state
     }
 
     getSmoothieComponents() {
-        fetch(API.components)
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.status);
-                }
-
-                return response.json();
-            })
-            .then(data => {
-                this.setState({
-                    componentList: data.content,
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        // TODO: get all components
     }
 
     saveSmoothie = smoothie => {
-        this.setState({
-            isLoading: true,
-        });
+        // TODO: start loader
 
-        const newSmoothie = {
-            ...smoothie,
-            file: null,
-        };
-
-        fetch(API.smoothies, {
-            body: JSON.stringify(newSmoothie),
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.status);
-                }
-
-                return response.json();
-            })
-            .then((data) => {
-                this.props.onSaveSmoothie(data.id);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            .finally(() => {
-                this.setState({
-                    isLoading: false,
-                });
-            });
+        // TODO: save smoothie and send id to parent component with onSaveSmoothies
     };
 
     render() {

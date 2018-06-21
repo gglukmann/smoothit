@@ -7,50 +7,24 @@ import { SmoothieDetails } from '../containers';
 import { Header } from '../components';
 
 class Home extends React.Component {
-    state = {
-        // get smooties from localstorage or use empty array
-        smoothies: JSON.parse(localStorage.getItem('smoothies')) || [],
-    };
+    // TODO: create state for smoothies
 
-    componentDidMount() {
-        this.getSmoothies();
-    }
+    // TODO: get smoothies when component mountes
 
     getSmoothies() {
-        return fetch(API.smoothies)
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.status);
-                }
-
-                return response.json();
-            })
-            .then(data => {
-                // add to localstorage to get them really fast on page load
-                localStorage.setItem('smoothies', JSON.stringify(data.content));
-                // update current state with new smoothies
-                this.setState({
-                    smoothies: data.content,
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        // TODO: return fetch promise to get smoothies
     }
 
     saveSmoothie = (id) => {
-        this.getSmoothies().then(() => {
-            this.props.history.push(`/smoothie/${id}`);
-        });
+        // TODO: get smoothies and redirect to new id
     };
 
     render() {
         const { location } = this.props;
-        const { smoothies } = this.state;
 
         return (
             <React.Fragment>
-                <Header location={location} smoothies={smoothies} />
+                {/* <Header location={location} smoothies={smoothies} /> */}
                 <Switch>
                     <Route
                         exact

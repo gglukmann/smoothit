@@ -37,49 +37,15 @@ class SmoothieForm extends React.Component {
     }
 
     calculateSmoothie() {
-        const components = this.state.smoothie.components;
-
-        if (!components) return;
-
-        const kcal = components.reduce((previous, item) => {
-            return previous + item.kcalPerUnit * item.amount;
-        }, 0);
-        const price = components.reduce((previous, item) => {
-            return previous + item.unitPriceEur * item.amount;
-        }, 0);
-        const weight = components.reduce((previous, item) => {
-            return previous + item.amount;
-        }, 0);
-
-        this.setState({
-            kcal,
-            price,
-            weight,
-            smoothie: {
-                ...this.state.smoothie,
-                calories: kcal,
-            },
-        });
+        // TODO: calculate smoothies kcal, weight and price
     }
 
     handleValueUpdate = (e, key) => {
-        const smoothie = { ...this.state.smoothie };
-
-        smoothie[key] = e.target.value;
-
-        this.setState({ smoothie });
+        // TODO: update input values
     };
 
     updateSmoothieComponent(component, index) {
-        const smoothie = { ...this.state.smoothie };
-
-        if (component) {
-            smoothie.components[index] = component;
-        } else {
-            smoothie.components.splice(index, 1);
-        }
-
-        this.setState({ smoothie }, () => this.calculateSmoothie());
+        // TODO: update smoothie components
     }
 
     addSmoothieComponent = () => {
@@ -95,11 +61,8 @@ class SmoothieForm extends React.Component {
     };
 
     createShoppingList = () => {
-        this.setState({
-            isLoading: true,
-        });
+        // TODO: start loader
 
-        // Create order + load shopping list
         const data = {
             servings: this.state.smoothie.servings,
             components: this.state.smoothie.components.map(
@@ -109,49 +72,7 @@ class SmoothieForm extends React.Component {
             ),
         };
 
-        fetch(API.order, {
-            body: JSON.stringify(data),
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                fetch(`${API.shoppingList}/${data.id}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw Error(response.status);
-                        }
-
-                        return response.json();
-                    })
-                    .then(order => {
-                        this.setState({
-                            shoppingList: order,
-                        });
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.setState({
-                            isLoading: false,
-                        });
-                    });
-            })
-            .catch(error => {
-                console.log(error);
-
-                this.setState({
-                    isLoading: false,
-                });
-            });
+        // TODO: POST order, get order id and get shopping list
     };
 
     handleSubmit = e => {
@@ -323,7 +244,7 @@ class SmoothieForm extends React.Component {
                     !isNew && (
                         <div className="grid">
                             <div className="grid__col--md-6">
-                                <ShoppingList shoppingList={shoppingList} />
+                                {/* <ShoppingList shoppingList={shoppingList} /> */}
                             </div>
                         </div>
                     )}

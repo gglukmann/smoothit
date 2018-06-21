@@ -7,33 +7,10 @@ const ShoppingList = props => {
     return (
         <div className="note">
             <ul className="note__list">
-                {shoppingList.items.map((row, i) => {
-                    return (
-                        <li
-                            className="note__list-item"
-                            key={`${row.name}_${i}`}
-                        >
-                            <h3>
-                                <span className="text-highlight">
-                                    {row.brand}
-                                </span>{' '}
-                                {row.name}
-                            </h3>
-                            <p>
-                                {row.packages} x {row.packagePriceEur} &euro;/{
-                                    row.salesUnit
-                                }{' '}
-                                = {row.totalPriceEur} &euro;
-                            </p>
-                        </li>
-                    );
-                })}
+                {/* TODO: add shopping list items */}
             </ul>
             <h2>
-                Kokku:{' '}
-                <span className="text-highlight">
-                    {shoppingList.totalEur} &euro;
-                </span>
+                {/* TODO: add shopping list total */}
             </h2>
         </div>
     );
