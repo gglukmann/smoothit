@@ -20,44 +20,42 @@ const Header = ({ location: { pathname }, smoothies }) => {
     };
 
     return (
-        <header className="container">
+        <header className="header container">
             <div
                 className={`grid grid--between-xs ${
                     pathname === '/' ? 'grid--direction-column' : ''
                 }`}
             >
-                <Link to="/">
-                    <img src={smoothitLogo} alt="SmoothIT" />
+                <Link to="/" title="Avaleht">
+                    <img src={smoothitLogo} className="header__logo" alt="SmoothIT" />
                 </Link>
-                <div className="col">
-                    <SmoothieTable
-                        className={pathname !== '/' ? 'smoothietable--sm' : ''}
-                    >
-                        <Link onClick={scrollTop} to="/smoothie">
+                {pathname !== '/' && <Link to="/" className="header__close" title="Avaleht">
+                    <i className="fas fa-times fa-3x" />
+                </Link>}
+                <SmoothieTable
+                    className={pathname !== '/' ? 'smoothietable--sm' : ''}
+                >
+                    <Link onClick={scrollTop} to="/smoothie">
+                        <Smoothie
+                            size={pathname === '/' ? 'md' : ''}
+                            create
+                            inactive={isSmoothieInactive(pathname)}
+                        />
+                    </Link>
+                    {smoothies.map(item => (
+                        <Link
+                            onClick={scrollTop}
+                            key={item.id}
+                            to={`/smoothie/${item.id}`}
+                        >
                             <Smoothie
                                 size={pathname === '/' ? 'md' : ''}
-                                create
-                                inactive={isSmoothieInactive(pathname)}
+                                smoothie={item}
+                                inactive={isSmoothieInactive(pathname, item.id)}
                             />
                         </Link>
-                        {smoothies.map(item => (
-                            <Link
-                                onClick={scrollTop}
-                                key={item.id}
-                                to={`/smoothie/${item.id}`}
-                            >
-                                <Smoothie
-                                    size={pathname === '/' ? 'md' : ''}
-                                    smoothie={item}
-                                    inactive={isSmoothieInactive(
-                                        pathname,
-                                        item.id,
-                                    )}
-                                />
-                            </Link>
-                        ))}
-                    </SmoothieTable>
-                </div>
+                    ))}
+                </SmoothieTable>
             </div>
         </header>
     );
