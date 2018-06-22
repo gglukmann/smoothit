@@ -17,7 +17,7 @@
   },
   "proxy": {
     "/catalogapi": {
-      "target": "http://su.leisurify.eu:8080/api",
+      "target": "http://188.166.161.105",
       "pathRewrite": {"^/catalogapi" : ""},
       "changeOrigin": true
     },
@@ -26,5 +26,5 @@
       "pathRewrite": {"^/orderapi" : ""},
       "changeOrigin": true
     }
-  } 
+  }
 }
