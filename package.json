@@ -17,14 +17,18 @@
   },
   "proxy": {
     "/catalogapi": {
-      "target": "http://su.leisurify.eu:8080/api",
-      "pathRewrite": {"^/catalogapi" : ""},
+      "target": "http://localhost:8000",
+      "pathRewrite": {
+        "^/catalogapi": ""
+      },
       "changeOrigin": true
     },
     "/orderapi": {
-      "target": "http://xn--ngsuvelikool2018shoppinglistapi-tid.azurewebsites.net/api",
-      "pathRewrite": {"^/orderapi" : ""},
+      "target": "http://localhost:8000",
+      "pathRewrite": {
+        "^/orderapi": ""
+      },
       "changeOrigin": true
     }
-  } 
+  }
 }

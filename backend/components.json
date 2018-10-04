@@ -1,0 +1,14 @@
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab8c"},"id":1001,"name":"Banaan","brand":"Chiquita","kcalPerUnit":890,"unit":"kg","unitPriceEur":1,"colorHex":"#ffe135","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab8d"},"id":1002,"name":"GreenPrince","brand":"Öko Toode","kcalPerUnit":400,"unit":"kg","unitPriceEur":1,"colorHex":"#8db600","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab8e"},"id":1003,"name":"Piim","brand":"Alma","kcalPerUnit":640,"unit":"kg","unitPriceEur":1,"colorHex":"#dcd9cd","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab8f"},"id":1005,"name":"Mandlipiim","brand":"Alpro","kcalPerUnit":240,"unit":"kg","unitPriceEur":2,"colorHex":"#efdecd","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab90"},"id":1007,"name":"Maasikad","brand":"Eesti","kcalPerUnit":330,"unit":"kg","unitPriceEur":8,"colorHex":"#ff43a4","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab91"},"id":1008,"name":"Vaarikad","brand":"NoBananas","kcalPerUnit":530,"unit":"kg","unitPriceEur":6,"colorHex":"#b3446c","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab92"},"id":1010,"name":"Maitsestamata jogurt","brand":"Alma","kcalPerUnit":590,"unit":"kg","unitPriceEur":3,"colorHex":"#f8f8ff","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab93"},"id":1011,"name":"Mango","brand":"Peruu","kcalPerUnit":600,"unit":"kg","unitPriceEur":2,"colorHex":"#dc8700","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab94"},"id":1012,"name":"Arbuus","brand":"Arbuusia","kcalPerUnit":300,"unit":"kg","unitPriceEur":1,"colorHex":"#fc6c85","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab95"},"id":1013,"name":"Vanilli koorejäätis","brand":"J��ts","kcalPerUnit":1900,"unit":"kg","unitPriceEur":6,"colorHex":"#fcf9f0","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab96"},"id":1014,"name":"Šokolaadi koorejäätis","brand":"Premia","kcalPerUnit":2680,"unit":"kg","unitPriceEur":7,"colorHex":"#7b3f00","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab97"},"id":1015,"name":"Kiivi korvis","brand":"Hispaania","kcalPerUnit":610,"unit":"kg","unitPriceEur":2,"colorHex":"#9dae5c","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab98"},"id":1016,"name":"Apelsin Valencia","brand":"Hispaania","kcalPerUnit":470,"unit":"kg","unitPriceEur":1,"colorHex":"#ffa500","file":null,"amount":null}
+{"_id":{"$oid":"5b2c01bef9154ba6d139ab99"},"id":1017,"name":"Õunamahl","brand":"Cappy","kcalPerUnit":450,"unit":"kg","unitPriceEur":1,"colorHex":"#ddad76","file":null,"amount":null}
