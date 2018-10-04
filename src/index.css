@@ -1,3 +1,14 @@
+/* Variables */
+
+:root {
+    --grey-l: #e9eae9;
+    --grey: #a3a3a3;
+    --grey-d: #3a3a3a;
+    --blue: #bcddda;
+    --pink: #cc3f98;
+    --corner-radius: 99em;
+}
+
 *,
 :after,
 :before {
@@ -27,15 +38,11 @@ button {
     outline: none;
 }
 
-/* Variables */
-
-:root {
-    --grey-l: #e9eae9;
-    --grey: #a3a3a3;
-    --grey-d: #3a3a3a;
-    --blue: #bcddda;
-    --pink: #cc3f98;
-    --corner-radius: 99em;
+input[type='number']:focus,
+input[type='text']:focus,
+select:focus,
+button:focus {
+    border: 2px solid var(--grey-l);
 }
 
 /* BODY */
