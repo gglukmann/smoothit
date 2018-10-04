@@ -15,10 +15,10 @@ const Smoothie = ({ smoothie, size, inactive, create }) => {
     };
 
     const getColorRows = components => {
-        return components.map(component => {
+        return components.map((component, i) => {
             return (
                 <div
-                    key={`smoothie_${component.id}`}
+                    key={`smoothie_${i}`}
                     className="smoothie__color"
                     style={{
                         flexGrow: component.amount,
